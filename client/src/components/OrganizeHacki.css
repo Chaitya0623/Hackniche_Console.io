@@ -1,0 +1,12 @@
+body{
+    color:white;
+}
+
+.placeholder-colorer::placeholder{
+    color: white;
+}
+
+.maroon{
+    color:#9E4770;
+}
+

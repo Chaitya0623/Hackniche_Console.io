@@ -13,6 +13,6 @@ body{
 }
 
 .HackiCard:hover{
-        box-shadow: 0px 0px 10px 5px rgba(241, 240, 247, 0.2);
+        box-shadow: 0px 0px 20px 1px rgba(255, 255, 255, 0.5);
       
 }
