@@ -50,6 +50,7 @@ const OrganizeHacki = () => {
             backgroundColor: "#201A23",
             fontFamily: "Ubuntu",
             height: "100vh",
+            position:'relative', left:'30rem' 
           }}
         >
           <MultiStep

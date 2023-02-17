@@ -25,7 +25,8 @@ const Submissions = () => {
   return (
     <>
       {/* <Particle /> */}
-      <Paper elevation={5} style={{width:'80vw', position:'relative', left:'10vw', marginBottom:'2rem'}}>
+      <Paper elevation={5} style={{width:'80vw', position: "relative",
+          right: "22vw", marginBottom:'2rem'}}>
         <div style={{ backgroundColor: "white" }}>
           <Grid
             container

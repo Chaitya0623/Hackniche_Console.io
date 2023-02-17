@@ -6,6 +6,9 @@ import Hackathons from './components/Hackathons';
 import OrganizeHacki from './components/OrganizeHacki';
 import HackiDisplay from './components/HackiDisplay';
 import Register from './components/Register';
+import HackiReport from './components/HackiReport';
+import MyHackathons from './components/MyHackathons';
+
 
 function App() {
   return (
@@ -15,7 +18,9 @@ function App() {
         {/* <Hackathons/> */}
         {/* <OrganizeHacki/> */}
         {/* <HackiDisplay /> */}
-        <Register/>
+        {/* <Register/> */}
+        {/* <HackiReport/> */}
+        <MyHackathons/>
     </div>
   );
 }

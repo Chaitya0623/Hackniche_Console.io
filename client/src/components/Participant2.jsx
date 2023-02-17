@@ -29,7 +29,7 @@ const Participant2 = () => {
         style={{
           width: "80vw",
           position: "relative",
-          left: "10vw",
+          right: "22vw",
           marginBottom: "2rem",
         }}
       >

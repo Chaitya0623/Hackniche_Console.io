@@ -50,6 +50,7 @@ const prevStyle = {
             backgroundColor: "#201A23",
             fontFamily: "Ubuntu",
             height: "100vh",
+            position:'relative', left:'30rem' 
           }}
         >
           <MultiStep
@@ -57,7 +58,6 @@ const prevStyle = {
             showNavigation={true}
             prevStyle={prevStyle}
             nextStyle={prevStyle}
-            style={{ display: "flex", justifyContent: "center" }}
           >
             <Participant1 title="Participant 1" />
             <Participant2 title="Participant 2" />
