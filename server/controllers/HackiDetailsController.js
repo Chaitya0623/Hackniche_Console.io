@@ -1,7 +1,7 @@
 const {
-  HackiDetail,
+  HackiDetailModel,
   validateHackiDetail,
-} = require("../model/HackiDetailSchema");
+} = require("../models/HackiDetailsModel");
 
 const addHackiDetail = async (request, response) => {
   console.log("HackiDetailcontroller => addHackiDetail");
@@ -10,14 +10,38 @@ const addHackiDetail = async (request, response) => {
   const image = request.file ? request.file.filename : null;
   console.log("Image declare krne ke baad", image);
 
-  const { name, address, contact, email } = request.body;
+  const { title , modeOfHacki,organisation,domain,regiStart,
+  regiEnd,
+  hackiStart,
+  hackiEnd,
+  preferredSkill,
+  min,
+  max,
+  contactEmail,
+  discordLink,
+  instaLink,
+  linkedInLink,
+  rules,
+  price1,
+  price2,
+  price3 } = request.body;
 
   const HackiDetail = {
-    name,
-    address,
-    contact,
-    email,
-    image,
+  logo , title , modeOfHacki,organisation,domain,regiStart,
+  regiEnd,
+  hackiStart,
+  hackiEnd,
+  preferredSkill,
+  min,
+  max,
+  contactEmail,
+  discordLink,
+  instaLink,
+  linkedInLink,
+  rules,
+  price1,
+  price2,
+  price3
   };
   const { error } = validateHackiDetail(HackiDetail);
   if (error) {
@@ -25,12 +49,22 @@ const addHackiDetail = async (request, response) => {
     return response.status(400).send({ message: error.details[0].message });
   }
 
-  const newHackiDetail = new HackiDetail({
-    name,
-    address,
-    contact,
-    email,
-    image,
+  const newHackiDetail = new HackiDetailModel({
+  logo , title , modeOfHacki,organisation,domain,regiStart,
+  regiEnd,
+  hackiStart,
+  hackiEnd,
+  preferredSkill,
+  min,
+  max,
+  contactEmail,
+  discordLink,
+  instaLink,
+  linkedInLink,
+  rules,
+  price1,
+  price2,
+  price3
   });
   try {
     console.log("try");
@@ -44,7 +78,7 @@ const addHackiDetail = async (request, response) => {
 
 const getHackiDetails = async (request, response) => {
   try {
-    const HackiDetails = await HackiDetail.find({});
+    const HackiDetails = await HackiDetailModel.find({});
     response.status(200).json(HackiDetails);
   } catch (error) {
     response.status(404).json({ message: error.message });
@@ -54,7 +88,7 @@ const getHackiDetails = async (request, response) => {
 const getHackiDetail = async (request, response) => {
   try {
     // console.log(request.params.email);
-    const HackiDetail = await HackiDetail.findOne({
+    const HackiDetail = await HackiDetailModel.findOne({
       email: request.params.email,
     });
     // const user = await User.findById(request.params.id);
@@ -68,9 +102,9 @@ const getHackiDetail = async (request, response) => {
 const editHackiDetail = async (request, response) => {
   const HackiDetail = request.body;
   console.log(HackiDetail);
-  const editHackiDetail = new HackiDetail(HackiDetail);
+  const editHackiDetail = new HackiDetailModel(HackiDetail);
   try {
-    await User.updateOne({ email: HackiDetail.email }, editHackiDetail);
+    await HackiDetailModel.updateOne({ email: HackiDetail.email }, editHackiDetail);
     response.status(201).json(editHackiDetail);
   } catch (error) {
     response.status(409).json({ message: error.message });
@@ -79,7 +113,7 @@ const editHackiDetail = async (request, response) => {
 
 const deleteHackiDetail = async (request, response) => {
   try {
-    await HackiDetail.deleteOne({ _id: request.params.id });
+    await HackiDetailModel.deleteOne({ _id: request.params.id });
     response.status(201).json(editHackiDetail);
   } catch (error) {
     response.status(409).json({ message: error.message });

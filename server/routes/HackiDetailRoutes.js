@@ -1,26 +1,21 @@
 const {
-  addClientProfile,
-  getClientProfiles,
-  getClientProfile,
-  editClientProfile,
-  deleteClientProfile,
-} = require("../controller/clientProfileController");
+  addHackiDetail,
+  getHackiDetails,
+  getHackiDetail,
+  editHackiDetail,
+  deleteHackiDetail,
+} = require("../controllers/HackiDetailsController");
 
 const { upload } = require("../middlewares/multer");
 const express = require("express");
 const router = express.Router();
 
-router.post("/addClientProfile", upload.single("file"), addClientProfile);
-router.get("/allClientProfiles", getClientProfiles);
-router.get("/:email", getClientProfile);
-router.get("/:id", getClientProfile);
-router.put("/:id", editClientProfile);
-router.delete("/:id", deleteClientProfile);
-
-// router.get("/all", (req, res) => {
-//   console.log("Hey!");
-//   res.send("Hey , Kreena here!");
-// });
+router.post("/addHackiDetail", upload.single("file"), addHackiDetail);
+router.get("/allHackiDetails", getHackiDetails);
+router.get("/:email", getHackiDetail);
+router.get("/:id", getHackiDetail);
+router.put("/:id", editHackiDetail);
+router.delete("/:id", deleteHackiDetail);
 
 router.get("/", (req, res) => {
   console.log("Welcome");

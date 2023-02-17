@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 
 const adminRoutes = require('./routes/adminRoutes');
 const loginRoutes = require('./routes/loginRegRoutes');
+const hackiDetail = require('./routes/HackiDetailRoutes');
 const bodyParser = require('body-parser');
-const { upload } = require("../middlewares/multer");
+const { upload } = require("./middlewares/multer");
 
 
 mongoose.set("strictQuery", true);
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', loginRoutes);
 app.use('/admin', adminRoutes);
+app.use('/hackiOrg', hackiDetail);
 
 app.use("/HackiLogo", express.static("HackiLogo"));
 
