@@ -36,7 +36,7 @@ terms = {'Preffered Skills':['black belt','capability analysis','control charts'
                                 'hospital','human factors','medical','reporting system','communication']
         }
 
-def scanResume(resume): 
+def scanResume(resume,teamscore): 
 
   # ===== PDF Opening, Reading and Text Extraction =====
 
@@ -106,48 +106,47 @@ def scanResume(resume):
   # ===== Create a data frame with the scores summary =====
 
   summary = pd.DataFrame(scores,index=terms.keys(),columns=['score']).sort_values(by='score',ascending=False)
-  print(summary)
+#   print(summary)
 
   total = preferred+technical+nontechnical
+  teamscore = teamscore + total
   print(f'Total: {total}')
+  return teamscore
 
 
-client=MongoClient('mongodb://localhost:27017/')
-db=client['jwtDB']
-collection=db['listings']
-
-pdf_doc=collection.find_one({'image':'MANN.pdf'})
-pdf_data=pdf_doc['image']
-print(type(pdf_data))
-
-# with open('MANN_RESUME.pdf','wb') as f:
-#     f.write(pdf_data)
+# my_db=MongoClient()
+# fs=GridFSBucket(my_db)
+# with open('my-copy.pdf','wb+') as file:
+#     fs.download_to_stream_by_name('MANN RESUMe FINAL 2.pdf',file)
+#     scanResume(file)
 
 # scanResume('Chaitya_Resume.pdf')
 # scanResume('Jigar_Resume.pdf')
 # scanResume('Kreena_Resume.pdf')
 # scanResume('Mann_Resume.pdf')
 
-from flask import Flask, request, jsonify
-from io import BytesIO
-import base64
-from flask_cors import CORS, cross_origin
-app = Flask(__name__)
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+# res = {"Console.io":['Chaitya_Resume.pdf','Jigar_Resume.pdf','Kreena_Resume.pdf','Mann_Resume.pdf'],
+#        "DeBuglars":['Vatsal_Resume.pdf','Medha_Resume.pdf','Sahil_Resume.pdf','Meet_Resume.pdf'],
+#        "Code In Node":['Meghesh_resume.pdf','Yash_Resume.pdf','Shantanu_Resume.pdf'],
+#        "AJAX":['Tejas_Resume.pdf','Nishant_Resume.pdf'],
+#        "Cyntinal":['Yash1_Resume.pdf','Ayush_Resume.pdf','Atharva_Resume.pdf','Dhruvil_Resume.pdf'],
+#        "Hugs for Bugs":['Mihir_Resume.pdf','Vivek_Resume.pdf']
+#       }
+# teamscore = {}
+# for i,j in res.items():
+#     # print(i,j)
+#     ts=0
+#     for x in j:
+#         ts=scanResume(x,ts)
+#     teamscore[i]=ts/len(j)
+# print(teamscore)
+# import operator
+# sorted_teamscore = dict( sorted(teamscore.items(), key=operator.itemgetter(1),reverse=True))
+# print(sorted_teamscore)
 
-# Route to handle PDF prediction
-@app.route('/predict', methods=['POST'])
-@cross_origin
-def predict():
-    # Get the PDF file from the request
-    pdf_file = request.files['pdf'].read()
-    print(pdf_file)
-    # Do something with the PDF file, e.g. pass it to an ML model
-    # ...
+# size = 4
+# shortlisted = dict(list(sorted_teamscore.items())[0: size])
+# for i in shortlisted:
+#     print(i)
 
-    # Return a response
-    return jsonify({'result': 'success'})
-
-if __name__ == '__main__':
-    app.run()
+scanResume('str1.pdf',0)
