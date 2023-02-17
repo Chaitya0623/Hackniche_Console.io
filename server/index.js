@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const adminRoutes = require('./routes/adminRoutes');
 const loginRoutes = require('./routes/loginRegRoutes');
 const bodyParser = require('body-parser');
-const { upload } = require("../middlewares/multer");
+const { upload } = require("./middlewares/multer");
 
 
 mongoose.set("strictQuery", true);

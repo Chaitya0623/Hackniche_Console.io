@@ -13,12 +13,16 @@ export const Navbar = () => {
   // const navigate = useNavigate();
   const handleLogout = () => {
     console.log("Logout");
-    // navigate('/login');
-    // localStorage.removeItem("secret_token");
+    localStorage.removeItem("token");
+    localStorage.removeItem("isVerified");
+    localStorage.removeItem("email");
+    // window.location.reload();
+    setStat("Login");
+    navigate('/');
     console.log("Logout successfully");
-    // window.location.reload();
-    // window.location.reload();
   };
+
+
 
   // adding event listener for responsiveness
   const [width, setWindowWidth] = useState(0);
@@ -38,9 +42,22 @@ export const Navbar = () => {
   const resp = response.responsive;
   //
 
+  const ViewHButton = styled(Button)({
+    position: "absolute",
+    right: resp ? "15vw" : "15vw",
+    top: "1.5vh",
+    borderRadius: "3rem",
+    marginLeft: "1.2rem",
+    textDecoration: "none",
+    p: "7px",
+    color: "#9E4770",
+    fontSize: "1.1rem",
+    "&:hover": { backgroundColor: "#9E4770", color: "white" },
+  });
+
   const LoginButton = styled(Button)({
     position: "absolute",
-    right: resp ? "10vw" : "10vw",
+    right: resp ? "7vw" : "7vw",
     top: "1.5vh",
     borderRadius: "3rem",
     marginLeft: "1.2rem",
@@ -53,7 +70,7 @@ export const Navbar = () => {
 
   const SignupButton = styled(Button)({
     position: "absolute",
-    right: resp ? "30vw" : "25vw",
+    right: resp ? "35vw" : "30vw",
     top: "1.5vh",
     borderRadius: "3rem",
     marginLeft: "1.2rem",
@@ -64,33 +81,48 @@ export const Navbar = () => {
     "&:hover": { backgroundColor: "#9E4770", color: "white" },
   });
 
+  const navigate = useNavigate();
+  const [loginStatus, setStat] = useState("Login");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token === undefined) {
+      setStat("Login");
+    }
+    else {
+      setStat("Logout");
+    }
+  }, [])
+
   return (
     <Paper
-    elevation={3}
-    style={{ width: "100%", position: "relative", borderRadius:'8rem'}}
-  >
-    <AppBar position="static">
-      <Toolbar
-        style={{
-          backgroundColor: "white",
-          borderRadius: "6px",
-        }}
-      >
-        <Typography variant="h6" style={{ color: "black" }}>
-          Home Page
-        </Typography>
-        <Box flexGrow={1} />
-        {/* <Link to="/register/client"> */}
-        <SignupButton>Organize Hackathon</SignupButton>
-        {/* </Link> */}
-        {/* <Link to="/register/worker"> */}
-        <LoginButton>Go to Dashboard</LoginButton>
-        {/* </Link> */}
-        <AccountCircleOutlinedIcon
-          style={{ color: "#9E4770", fontSize: "2rem" }}
-        />
-      </Toolbar>
-    </AppBar>
-  </Paper>
+      elevation={3}
+      style={{ width: "100%", position: "relative", borderRadius: '8rem' }}
+    >
+      <AppBar position="static">
+        <Toolbar
+          style={{
+            backgroundColor: "white",
+            borderRadius: "6px",
+          }}
+        >
+          <Typography variant="h6" style={{ color: "black" }}>
+            Home Page
+          </Typography>
+          <Box flexGrow={1} />
+          <SignupButton>Organize Hackathon</SignupButton>
+          <ViewHButton>View Hackathons</ViewHButton>
+          <LoginButton onClick={() => {
+            if(loginStatus==="Login")
+            navigate('/login-signup')
+            else if(loginStatus==="Logout")
+            handleLogout();
+          }}>{loginStatus}</LoginButton>
+          <AccountCircleOutlinedIcon
+            style={{ color: "#9E4770", fontSize: "2rem" }}
+          />
+        </Toolbar>
+      </AppBar>
+    </Paper>
   )
 };

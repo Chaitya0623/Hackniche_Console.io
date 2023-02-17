@@ -1,4 +1,4 @@
-import { useState  } from "react";
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -112,12 +112,12 @@ const Login = () => {
 
   // signup func start
 
-  const [signupUser, setSignupUser] = useState(signupDefaultValue);
+  // const [signupUser, setSignupUser] = useState(signupDefaultValue);
 
-  const signupHandleChange = (e) => {
-    console.log(e.target.name, e.target.value);
-    setSignupUser({ ...signupUser, [e.target.name]: e.target.value });
-  };
+  // const signupHandleChange = (e) => {
+  //   console.log(e.target.name, e.target.value);
+  //   setSignupUser({ ...signupUser, [e.target.name]: e.target.value });
+  // };
 
   const signupValidate = (values) => {
     const errors = {};
@@ -199,7 +199,7 @@ const Login = () => {
       transform: registrationFStatus ? "translateX(50vw)" : "translateX(0vw)",
     },
     config: {
-      duration: registrationFStatus ? flipDur  : flipDur,
+      duration: registrationFStatus ? flipDur : flipDur,
     },
   });
   // signup img
@@ -243,28 +243,82 @@ const Login = () => {
   });
 
   const LoginComponent = () => {
+    const navigate = useNavigate();
+    const defaultValue={
+      email:"",
+      password:""
+    }
+    const [user, setUser] = useState(defaultValue);
+    const handleChange = (e) => {
+      console.log(e.target.name, e.target.value);
+      setUser({ ...user, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+      var urlencoded = new URLSearchParams();
+      urlencoded.append("email", user.email);
+      urlencoded.append("password", user.password);
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+      };
+
+      fetch("http://localhost:8080/login", requestOptions)
+        .then(response => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("isVerified");
+          // localStorage.removeItem("email");
+          // localStorage.removeItem("access_lv");
+          return response.json()
+        }
+        )
+        .then(result => {
+          console.log(result)
+          localStorage.setItem("token", result.token);
+          localStorage.setItem("isVerified", result.isVerified);
+          localStorage.setItem("email", user.email);
+          return result;
+        })
+        .then(r => {
+          if (r.token) {
+            if (r.access_lvl === "user")
+              return navigate('/');
+            else if (r.access_lvl === "admin")
+              return navigate('/admin');
+          }
+        })
+        .catch(error => console.log('error', error));
+    }
+
     return (
       <Grid container spacing={0} className="login_main_container">
         {formTrails.map((props) => (
           <AnimatedGrid item xs={6} style={props}>
             <form
               className="inputBox"
-              // onSubmit={handleSubmit}
+            // onSubmit={handleSubmit}
             >
               <Box
                 sx={{
                   maxWidth: 500,
                   width: 500,
                   height: 500,
-                    // border: "2px solid black",
+                  // border: "2px solid black",
                   display: "flex",
                   flexDirection: "column",
-                  alignItems:  resp ? "center" : "flex-start",
+                  alignItems: resp ? "center" : "flex-start",
                   padding: "1rem",
                 }}
               >
                 <p style={{ color: "gray" }}>START FOR FREE</p>
-                <h1 style={{ margin: "4px 0" }}>Welcome back!</h1>
+                <h1 style={{ margin: "4px 0",color:"gray" }}>Welcome back!</h1>
 
                 <FormControl
                   style={{ margin: "1rem 0", width: resp ? "40ch" : "50ch" }}
@@ -289,7 +343,7 @@ const Login = () => {
                   />
                 </FormControl>
                 <FormControl
-                  sx={{ width:  resp ? "40ch" : "50ch" }}
+                  sx={{ width: resp ? "40ch" : "50ch" }}
                   variant="outlined"
                   value={user.password}
                   onChange={handleChange}
@@ -300,7 +354,7 @@ const Login = () => {
                   </InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-password"
-                    type={showPassword ? "text" : "password"}
+                    type={!showPassword ? "text" : "password"}
                     label="Password"
                     name="password"
                     endAdornment={
@@ -337,7 +391,7 @@ const Login = () => {
                 <div style={{ display: "flex" }}>
                   {/* <Link to="/password-reset"> */}
                   <ChangeButton>Forgot Password</ChangeButton>
-                  <SignupButton type="submit">Log in</SignupButton>
+                  <SignupButton type="submit" onClick={handleSubmit}>Log in</SignupButton>
                   {/* </Link> */}
                 </div>
               </Box>
@@ -357,6 +411,48 @@ const Login = () => {
   };
 
   const SignUpComponent = () => {
+
+    const navigate = useNavigate();
+    const defaultValue={
+      fname:"",
+      lname:"",
+      email:"",
+      password:""
+    }
+    const [user, setUser] = useState(defaultValue);
+
+    const handleChange = (e) => {
+      console.log(e.target.name, e.target.value);
+      setUser({ ...user, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = (e) => {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+      var urlencoded = new URLSearchParams();
+      urlencoded.append("fname", user.fname);
+      urlencoded.append("lname", user.lname);
+      urlencoded.append("email", user.email);
+      urlencoded.append("password", user.password);
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+      };
+
+      fetch("http://localhost:8080/signup/user", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result);
+          if(result.message==="Success"){
+            navigate('/login');
+          }
+        })
+        .catch(error => console.log('error', error));
+    }
     return (
       <Grid container spacing={0} className="signUp_main_container">
         {trails2.map((props) => (
@@ -372,11 +468,11 @@ const Login = () => {
             item
             xs={6}
             style={props}
-            // className="formGrid"
+          // className="formGrid"
           >
             <form
               className="inputBox"
-              // onSubmit={signupHandleSubmit}
+            // onSubmit={signupHandleSubmit}
             >
               <Box
                 sx={{
@@ -391,7 +487,7 @@ const Login = () => {
                 }}
               >
                 <p style={{ color: "gray" }}>START FOR FREE</p>
-                <h1 style={{ margin: "4px 0" }}>Create new account</h1>
+                <h1 style={{ margin: "4px 0", color:"gray" }}>Create new account</h1>
                 <span style={{ color: "gray" }}>
                   Already A Member?{" "}
                   <a
@@ -410,9 +506,9 @@ const Login = () => {
                     label="FirstName"
                     placeholder="First Name"
                     name="fname"
-                    value={signupUser.fname}
-                    onChange={signupHandleChange}
-                    style={{ margin: "1rem 0" ,  width:  resp ? "17ch" :"24ch" }}
+                    value={user.fname}
+                    onChange={handleChange}
+                    style={{ margin: "1rem 0", width: resp ? "17ch" : "24ch" }}
                   />
                   <p className="error_message">{errorS.fname}</p>
                   <TextField
@@ -421,18 +517,18 @@ const Login = () => {
                     label="Lastname"
                     placeholder="Last Name"
                     name="lname"
-                    value={signupUser.lname}
-                    onChange={signupHandleChange}
+                    value={user.lname}
+                    onChange={handleChange}
                     required
-                    style={{ margin: "1rem " ,  width:  resp ? "17ch" :"24ch" }}
+                    style={{ margin: "1rem ", width: resp ? "17ch" : "24ch" }}
                   />
                   <p className="error_message">{errorS.lname}</p>
                 </div>
                 <FormControl
-                  sx={{ width:  resp ? "40ch" :"50ch" }}
+                  sx={{ width: resp ? "40ch" : "50ch" }}
                   variant="outlined"
-                  value={signupUser.password}
-                  onChange={signupHandleChange}
+                  value={user.password}
+                  onChange={handleChange}
                   required
                 >
                   <InputLabel htmlFor="outlined-adornment-password">
@@ -477,14 +573,14 @@ const Login = () => {
                     label="Email"
                     placeholder="Email"
                     name="email"
-                    value={setSignupUser.email}
-                    onChange={signupHandleChange}
+                    value={user.email}
+                    onChange={handleChange}
                     required
                   />
                 </FormControl>
                 <p className="error_message">{errorS.email}</p>
-                <div style={{ display: "flex" , justifyContent:'center', width:'50ch'}}>
-                  <SignupButton type="submit">Create account</SignupButton>
+                <div style={{ display: "flex", justifyContent: 'center', width: '50ch' }}>
+                  <SignupButton type="submit" onClick={handleSubmit}>Create account</SignupButton>
                 </div>
               </Box>
             </form>
