@@ -157,7 +157,7 @@ const Login = () => {
   });
 
   const ChangeButton = styled(Button)({
-    backgroundColor: "#9E4770",
+    backgroundColor: "#2E2532",
     margin: "1rem",
     borderRadius: "3rem",
     marginLeft: "1.2rem",
@@ -317,7 +317,7 @@ const Login = () => {
                   padding: "1rem",
                 }}
               >
-                <p style={{ color: "gray" }}>START FOR FREE</p>
+                {/* <p style={{ color: "gray" }}>START FOR FREE</p> */}
                 <h1 style={{ margin: "4px 0",color:"gray" }}>Welcome back!</h1>
 
                 <FormControl

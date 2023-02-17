@@ -10,7 +10,6 @@ import Submissions from "./Submissions";
 import OrgDetails from "./OrgDetails";
 import "./OrganizeHacki.css";
 
-
 const prevStyle = {
   borderRadius: "3rem",
   marginLeft: "1.2rem",
@@ -26,7 +25,8 @@ const OrganizeHacki = () => {
         style={{
           backgroundColor: "#201A23",
           fontFamily: "Ubuntu",
-          height: "140vh",
+          margin:0 
+          // height: "60vh",
         }}
       >
         <p>
@@ -55,8 +55,8 @@ const OrganizeHacki = () => {
           <MultiStep
             activeStep={1}
             showNavigation={true}
-            prevStyle={prevStyle}
-            nextStyle={prevStyle}
+            // prevStyle={prevStyle}
+            // nextStyle={prevStyle}
             style={{ display: "flex", justifyContent: "center" }}
           >
             <Essentials title="Essentials" />

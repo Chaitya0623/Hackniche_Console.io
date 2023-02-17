@@ -8,6 +8,7 @@ import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { styled, alpha } from "@mui/material/styles";
+import './Navbar.css'
 
 export const Navbar = () => {
   // const navigate = useNavigate();
@@ -50,9 +51,8 @@ export const Navbar = () => {
     marginLeft: "1.2rem",
     textDecoration: "none",
     p: "7px",
-    color: "#9E4770",
     fontSize: "1.1rem",
-    "&:hover": { backgroundColor: "#9E4770", color: "white" },
+    "&:hover": { color: "white" },
   });
 
   const LoginButton = styled(Button)({
@@ -63,7 +63,6 @@ export const Navbar = () => {
     marginLeft: "1.2rem",
     textDecoration: "none",
     p: "7px",
-    color: "#9E4770",
     fontSize: "1.1rem",
     "&:hover": { backgroundColor: "#9E4770", color: "white" },
   });
@@ -76,7 +75,6 @@ export const Navbar = () => {
     marginLeft: "1.2rem",
     textDecoration: "none",
     p: "7px",
-    color: "#9E4770",
     fontSize: "1.1rem",
     "&:hover": { backgroundColor: "#9E4770", color: "white" },
   });
@@ -107,19 +105,19 @@ export const Navbar = () => {
           }}
         >
           <Typography variant="h6" style={{ color: "black",display:"flex" }}>
-          <Typography variant="h6" style={{ color: "blue" }}>Home</Typography> Page
+          <Typography variant="h6" classname='navButton' style={{ color: "#330867" }}>Home</Typography> Page
           </Typography>
           <Box flexGrow={1} />
-          <SignupButton onClick={()=>navigate('/hackathons/organize')}>Organize Hackathon</SignupButton>
-          <ViewHButton onClick={()=>navigate('/all-hackathons')}>View Hackathons</ViewHButton>
-          <LoginButton onClick={() => {
+          <SignupButton onClick={()=>navigate('/hackathons/organize')} className='navButton'>Organize Hackathon</SignupButton>
+          <ViewHButton onClick={()=>navigate('/all-hackathons')} className="navButton">View Hackathons</ViewHButton>
+          <LoginButton className="navButton" onClick={() => {
             if(loginStatus==="Login")
             navigate('/login-signup')
             else if(loginStatus==="Logout")
             handleLogout();
           }}>{loginStatus}</LoginButton>
           <AccountCircleOutlinedIcon
-            style={{ color: "#9E4770", fontSize: "2rem" }}
+            style={{ color: "#330867", fontSize: "2rem" }}
           />
         </Toolbar>
       </AppBar>

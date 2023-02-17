@@ -18,293 +18,389 @@ import Checkbox from "@mui/material/Checkbox";
 import { pink } from "@mui/material/colors";
 import FormGroup from "@mui/material/FormGroup";
 import Grid from "@mui/material/Grid";
+import { FileUploader } from "react-drag-drop-files";
+import MultiSelect from "react-multiple-select-dropdown-lite";
+import "react-multiple-select-dropdown-lite/dist/index.css";
+
+
 
 const Essentials = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
+  const fileTypes = ["JPEG", "PNG", "GIF"];
+  const [file, setFile] = useState(null);
+  const handleChange = (file) => {
+    setFile(file);
+  };
   const [rule, setrule] = useState("");
-  const [ammenities, setammenities] = useState("");
+  const [data, setData] = useState({
+    logo: "",
+    title: "",
+    modeOfHacki: "",
+    organisation: "",
+    domian: "",
+    regiStart: "",
+    regiEnd: "",
+    hackiStart: "",
+    hackiEnd: "",
+    preferredSkills: "",
+    min: "",
+    max: "",
+    contactEmail:"",
+    discordLink: "",
+    instaLink: "",
+    linkedInLink: "",
+    rules: "",
+    price1:"",
+    price2:"",
+    price3:"",
+  });
 
-
+  const handleDomain = (val) => {
+    console.log(val);
+    console.log(rule);
+    setrule(val);
+    console.log(rule);
+    setData({ ...data, rules:val});
+  };
+const DomainOptions = [
+  { label: "Web Development", value: "Web Development" },
+  { label: "Blockchain", value: "Blockchain" },
+  { label: "AI/ML", value: "AI/ML" },
+  { label: "IoT", value: "IoT" },
+  { label: "Cloud", value: "Cloud" },
+  { label: "Cybersecurity", value: "Cybersecurity" },
+  { label: "Design", value: "Design" },
+  { label: "DevOps", value: "DevOps" },
+  ];
 
   return (
     <>
-    <Paper elevation={5} style={{width:'80vw', position:'relative', left:'10vw', marginBottom:'2rem'}}>
-      <div style={{ backgroundColor: "white" }}>
-      <Grid container spacing={4} style={{padding:'3rem', margin:'1rem 0'}}>
-        <Grid item xs={6} style={{}}>
-        <p style={{ color: "#9E4770" }}>Enter Hackathon Name</p>
-        <TextField
-          id="outlined-search"
-          label="Hackathon Name"
-          type="search"
-          required
-          style={{ color: "white" , marginBottom:'2rem'}}
+    <Paper style={{width:'78vw', position:'relative', left:'10vw',borderRadius:5,height:400}}>
+      <Box style={{ backgroundColor: "white" }}>
+
+        <Grid container spacing={4} style={{padding:'3rem', margin:'rem 0'}}>
+          <Grid item xs={6} style={{}}>
+            <Box sx={{display:"flex"}}>
+            <Box>
+          <p style={{ color: "#9E4770" ,marginRight:'46em'}}>Hackathon Logo</p>
+          <FileUploader
+          multiple={true}
+          handleChange={handleChange}
+          name="file"
+          types={fileTypes}
         />
-        <p style={{ color: "#9E4770" }}>
-          When does your hackathon submission period begin?
-        </p>
-        <p style={{ color: "#9E4770" }}>
-        (This is the
-          expected day participants will start building.)
-        </p>
-        <TextField
-          id="outlined-search"
-          // label="Hackathon Date"
-          type="date"
-          required
-          style={{ color: "white", display: "block", marginBottom:'2rem' }}
-        />
-        <FormControl>
-          <FormLabel
-            id="demo-row-radio-buttons-group-label"
-            style={{ color: "#9E4770" }}
-          >
-            What is the mode of the hackathon
-          </FormLabel>
-          <RadioGroup
-            row
-            aria-labelledby="demo-row-radio-buttons-group-label"
-            name="row-radio-buttons-group"
-            style={{ marginBottom:'2rem'}}
-          >
-            <FormControlLabel
-              value="Online"
-              control={<Radio />}
-              label="Female"
-            />
-            <FormControlLabel
-              value="Offline"
-              control={<Radio />}
-              label="Male"
-            />
-            <FormControlLabel
-              value="Hybrid"
-              control={<Radio />}
-              label="Other"
-            />
-          </RadioGroup>
-        </FormControl>
-        <p style={{ color: "#9E4770" }}>Name of your organisation(if any)</p>
-        <TextField
-          id="outlined-search"
-          label="Organisation Name"
-          type="search"
-          required
-          style={{ color: "white" }}
-        />
-        <form
-          className="inputBox"
-          // onSubmit={handleSubmit}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          </form>
-        </Grid>
-        <Grid item xs={6}>
-        <Typography
-            sx={{
-              color: "#9E4770",
-              margin:'1rem',
-              position:'relative',
-              right:'8rem'
+        <p style={{marginRight:'28.5em',marginTop:'0.8em',marginRight:'43em'}}> {file ? `File name: ${file[0].name}` : "No files uploaded yet"}</p>
+          <TextField
+            id="outlined-search"
+            label="Hackathon Name"
+            name="title"
+            type="search"
+            required
+            style={{ color: "white" , marginBottom:'1.8rem',marginTop:'1rem',width:'33.5em',marginRight:'20rem'}}
+          />
+          <TextField
+            id="outlined-search"
+            label="Hackathon Organisation"
+            name="title"
+            type="search"
+            required
+            style={{ color: "white" , marginBottom:'2rem',width:'33.5em',marginRight:'20rem'}}
+          />
+          </Box>
+          <Box>
+          <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <TextField
+                      sx={{
+                        marginRight: 2,
+                      }}
+                      name="startDate"
+                      id="standard-basic"
+                      variant="outlined"
+                      type="date"
+                      onChange={handleChange}
+                    />
+                    <TextField
+                      sx={{
+                        marginLeft: 2,
+                      }}
+                      name="endDate"
+                      id="standard-basic"
+                      variant="outlined"
+                      type="date"
+                      onChange={handleChange}
+                    />
+                  </Box>
+          <FormControl>
+            <FormLabel
+              id="demo-row-radio-buttons-group-label"
+              style={{ color: "#9E4770" }}
+            >
+              Mode Of Hackathon
+            </FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+              style={{ marginBottom:'2rem'}}
+            >
+              <FormControlLabel
+                value="Online"
+                control={<Radio />}
+                label="Online"
+                name="modeOfHacki"
+              />
+              <FormControlLabel
+                value="Offline"
+                control={<Radio />}
+                label="Offline"
+                name="modeOfHacki"
+              />
+            </RadioGroup>
+          </FormControl>
+          <MultiSelect
+                    sx={{ backgroundColor: "#fff", marginTop: 3 }}
+                    name="rules"
+                    placeholder="Domains"
+                    className="multi-select"
+                    onChange={handleDomain}
+                    options={DomainOptions}
+                    />
+          </Box>
+          </Box>
+          {/* <p style={{ color: "#9E4770" }}>
+            When does your hackathon submission period begin?
+          </p>
+          <p style={{ color: "#9E4770" }}>
+          (This is the
+            expected day participants will start building.)
+          </p> */}
+          
+          {/* <p style={{ color: "#9E4770" }}>Name of your organisation(if any)</p>
+          <TextField
+            id="outlined-search"
+            label="Organisation Name"
+            type="search"
+            required
+            style={{ color: "white" }}
+          /> */}
+          
+          {/* <form
+            className="inputBox"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            Select Domain
-          </Typography>
-        <FormGroup>
-            <Grid container spacing={2}>
-              <Grid
-                item
-                xs={6}
-                style={{ display: "flex", flexDirection: "column" }}
-              >
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="Gaming"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="Web "
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="Machine Learning"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="Databases"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="Cloud"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="IoT"
-                />
+            </form> */}
+          </Grid>
+          {/* <Grid item xs={6}>
+          <Typography
+              sx={{
+                color: "#9E4770",
+                margin:'1rem',
+                position:'relative',
+                right:'8rem'
+              }}
+            >
+              Select Domain
+            </Typography>
+          <FormGroup>
+              <Grid container spacing={2}>
+                <Grid
+                  item
+                  xs={6}
+                  style={{ display: "flex", flexDirection: "column" }}
+                >
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="Gaming"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="Web "
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="Machine Learning"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="Databases"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="Cloud"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="IoT"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                  style={{ display: "flex", flexDirection: "column" }}
+                >
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="Blockchain"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="Cybersecurity"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="DevOps"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="Musin/Art"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="Design"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...label}
+                        sx={{
+                          color: pink[800],
+                          "&.Mui-checked": {
+                            color: pink[600],
+                          },
+                        }}
+                      />
+                    }
+                    label="Low/No Code"
+                  />
+                </Grid>
               </Grid>
-              <Grid
-                item
-                xs={6}
-                style={{ display: "flex", flexDirection: "column" }}
-              >
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="Blockchain"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="Cybersecurity"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="DevOps"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="Musin/Art"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="Design"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      {...label}
-                      sx={{
-                        color: pink[800],
-                        "&.Mui-checked": {
-                          color: pink[600],
-                        },
-                      }}
-                    />
-                  }
-                  label="Low/No Code"
-                />
-              </Grid>
-            </Grid>
-          </FormGroup>
+            </FormGroup>
+          </Grid> */}
         </Grid>
-      </Grid>
-        
 
-      </div>
-      </Paper>
+      </Box>
+    </Paper>
     </>
   );
 };

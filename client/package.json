@@ -17,6 +17,7 @@
     "d3-ease": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-drag-drop-files": "^2.3.8",
     "react-multiple-select-dropdown-lite": "^2.0.6",
     "react-multistep": "^5.5.3",
     "react-router-dom": "^6.8.1",
