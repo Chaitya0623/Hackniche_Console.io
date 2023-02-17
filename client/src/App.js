@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Hackathons from './components/Hackathons';
 import OrganizeHacki from './components/OrganizeHacki';
 import HackiDisplay from './components/HackiDisplay';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
         {/* <Login/> */}
         {/* <Home/> */}
         {/* <Hackathons/> */}
-        <OrganizeHacki/>
+        {/* <OrganizeHacki/> */}
         {/* <HackiDisplay /> */}
+        <Register/>
     </div>
   );
 }
