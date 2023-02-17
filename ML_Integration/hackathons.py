@@ -112,13 +112,42 @@ def scanResume(resume):
   print(f'Total: {total}')
 
 
-# my_db=MongoClient()
-# fs=GridFSBucket(my_db)
-# with open('my-copy.pdf','wb+') as file:
-#     fs.download_to_stream_by_name('MANN RESUMe FINAL 2.pdf',file)
-#     scanResume(file)
+client=MongoClient('mongodb://localhost:27017/')
+db=client['jwtDB']
+collection=db['listings']
 
-scanResume('Chaitya_Resume.pdf')
-scanResume('Jigar_Resume.pdf')
-scanResume('Kreena_Resume.pdf')
-scanResume('Mann_Resume.pdf')
+pdf_doc=collection.find_one({'image':'MANN.pdf'})
+pdf_data=pdf_doc['image']
+print(type(pdf_data))
+
+# with open('MANN_RESUME.pdf','wb') as f:
+#     f.write(pdf_data)
+
+# scanResume('Chaitya_Resume.pdf')
+# scanResume('Jigar_Resume.pdf')
+# scanResume('Kreena_Resume.pdf')
+# scanResume('Mann_Resume.pdf')
+
+from flask import Flask, request, jsonify
+from io import BytesIO
+import base64
+from flask_cors import CORS, cross_origin
+app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+# Route to handle PDF prediction
+@app.route('/predict', methods=['POST'])
+@cross_origin
+def predict():
+    # Get the PDF file from the request
+    pdf_file = request.files['pdf'].read()
+    print(pdf_file)
+    # Do something with the PDF file, e.g. pass it to an ML model
+    # ...
+
+    # Return a response
+    return jsonify({'result': 'success'})
+
+if __name__ == '__main__':
+    app.run()
