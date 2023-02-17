@@ -106,8 +106,8 @@ export const Navbar = () => {
             borderRadius: "6px",
           }}
         >
-          <Typography variant="h6" style={{ color: "black" }}>
-            Home Page
+          <Typography variant="h6" style={{ color: "black",display:"flex" }}>
+          <Typography variant="h6" style={{ color: "blue" }}>Home</Typography> Page
           </Typography>
           <Box flexGrow={1} />
           <SignupButton>Organize Hackathon</SignupButton>

@@ -6,6 +6,7 @@ import Hackathons from './components/Hackathons';
 import OrganizeHacki from './components/OrganizeHacki';
 import HackiDisplay from './components/HackiDisplay';
 import Register from './components/Register';
+import { Routes,Route } from 'react-router-dom';
 
 function App() {
   const user = localStorage.getItem("token");
