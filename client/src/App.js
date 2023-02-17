@@ -15,6 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login-signup" element={<Login />}></Route>
+        <Route path="/all-hackathons" element={<Hackathons />}></Route>
+        <Route path="/hackathons/organize" element={<OrganizeHacki />}></Route>
+        <Route path="/hackathons/display" element={<HackiDisplay />}></Route>
+        <Route path="/hackathons/register" element={<Register />}></Route>
       </Routes>
     </div>
   );
