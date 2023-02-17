@@ -10,9 +10,6 @@ import string
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from pymongo import MongoClient
-from gridfs  import GridFSBucket
-
 terms = {'Preffered Skills':['black belt','capability analysis','control charts','doe','dmaic','fishbone',
                               'gage r&r', 'green belt','ishikawa','iso','kaizen','kpi','lean','metrics',
                               'pdsa','performance improvement','process improvement','quality',
@@ -111,12 +108,6 @@ def scanResume(resume):
   total = preferred+technical+nontechnical
   print(f'Total: {total}')
 
-
-# my_db=MongoClient()
-# fs=GridFSBucket(my_db)
-# with open('my-copy.pdf','wb+') as file:
-#     fs.download_to_stream_by_name('MANN RESUMe FINAL 2.pdf',file)
-#     scanResume(file)
 
 scanResume('Chaitya_Resume.pdf')
 scanResume('Jigar_Resume.pdf')

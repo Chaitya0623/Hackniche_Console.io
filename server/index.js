@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const githubRoutes=require('./routes/githubRoutes')
 
 const adminRoutes = require('./routes/adminRoutes');
 const loginRoutes = require('./routes/loginRegRoutes');
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', loginRoutes);
 app.use('/admin', adminRoutes);
+app.use('/github',githubRoutes);
 
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
