@@ -110,8 +110,8 @@ export const Navbar = () => {
           <Typography variant="h6" style={{ color: "blue" }}>Home</Typography> Page
           </Typography>
           <Box flexGrow={1} />
-          <SignupButton>Organize Hackathon</SignupButton>
-          <ViewHButton>View Hackathons</ViewHButton>
+          <SignupButton onClick={()=>navigate('/hackathons/organize')}>Organize Hackathon</SignupButton>
+          <ViewHButton onClick={()=>navigate('/all-hackathons')}>View Hackathons</ViewHButton>
           <LoginButton onClick={() => {
             if(loginStatus==="Login")
             navigate('/login-signup')

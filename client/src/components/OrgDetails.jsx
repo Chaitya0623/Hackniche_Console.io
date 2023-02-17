@@ -43,7 +43,7 @@ const OrgDetails = () => {
         <p style={{ color: "#9E4770" }}>Enter Contact Email</p>
         <TextField
           id="outlined-search"
-          label="Hackathon Name"
+          label="Contact Email"
           type="search"
           required
           style={{ color: "white" , marginBottom:'2rem'}}
@@ -51,7 +51,7 @@ const OrgDetails = () => {
         <p style={{ color: "#9E4770" }}>Enter Discord link</p>
         <TextField
           id="outlined-search"
-          label="Hackathon Name"
+          label="Discord"
           type="search"
           required
           style={{ color: "white" , marginBottom:'2rem'}}
@@ -59,7 +59,7 @@ const OrgDetails = () => {
         <p style={{ color: "#9E4770" }}>Enter Instagram Page link (if any)</p>
         <TextField
           id="outlined-search"
-          label="Hackathon Name"
+          label="Instagram"
           type="search"
           required
           style={{ color: "white" , marginBottom:'2rem'}}
@@ -67,7 +67,7 @@ const OrgDetails = () => {
         <p style={{ color: "#9E4770" }}>Enter LinkedIn Page link (if any)</p>
         <TextField
           id="outlined-search"
-          label="Hackathon Name"
+          label="LinkedIn"
           type="search"
           required
           style={{ color: "white"}}
