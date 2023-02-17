@@ -23,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', loginRoutes);
 app.use('/admin', adminRoutes);
 
+app.use("/HackiLogo", express.static("HackiLogo"));
+
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.json({ error: err });
