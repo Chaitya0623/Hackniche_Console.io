@@ -15,39 +15,41 @@ import { styled, alpha } from "@mui/material/styles";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
+import  {Navbar}  from "./Navbar";
+import './Navbar.css'
 
 const Hackathons = () => {
   const TimeButton = styled(Button)({
-    backgroundColor: "#2E2532",
     margin: "1rem",
     borderRadius: "3rem",
     marginLeft: "1.2rem",
     textDecoration: "none",
-    padding: "12px 15px ",
+    // padding: "12px 15px ",
     width: "8rem",
     color: "white",
     fontSize: "0.8rem",
     backgroundColor: "#9E4770",
-    "&:hover": { backgroundColor: "#FBFBFB", color: "#9E4770" },
+    "&:hover": { color: "#9E4770" },
   });
 
 
   return (
     <>
+    
       <Paper
         style={{
-          backgroundColor: "#201A23",
+          backgroundImage:
+      " linear-gradient(210deg, rgba(107, 107, 107, 0.04) 0%, rgba(107, 107, 107, 0.04) 8%,rgba(31, 31, 31, 0.04) 8%, rgba(31, 31, 31, 0.04) 100%),linear-gradient(178deg, rgba(228, 228, 228, 0.04) 0%, rgba(228, 228, 228, 0.04) 62%,rgba(54, 54, 54, 0.04) 62%, rgba(54, 54, 54, 0.04) 100%),linear-gradient(293deg, rgba(18, 18, 18, 0.04) 0%, rgba(18, 18, 18, 0.04) 37%,rgba(233, 233, 233, 0.04) 37%, rgba(233, 233, 233, 0.04) 100%),linear-gradient(422deg, rgba(201, 201, 201, 0.04) 0%, rgba(201, 201, 201, 0.04) 55%,rgba(47, 47, 47, 0.04) 55%, rgba(47, 47, 47, 0.04) 100%),linear-gradient(439deg, rgba(172, 172, 172, 0.04) 0%, rgba(172, 172, 172, 0.04) 33%,rgba(26, 26, 26, 0.04) 33%, rgba(26, 26, 26, 0.04) 100%),linear-gradient(233deg, rgba(11, 11, 11, 0.04) 0%, rgba(11, 11, 11, 0.04) 38%,rgba(87, 87, 87, 0.04) 38%, rgba(87, 87, 87, 0.04) 100%),linear-gradient(516deg, rgba(199, 199, 199, 0.04) 0%, rgba(199, 199, 199, 0.04) 69%,rgba(4, 4, 4, 0.04) 69%, rgba(4, 4, 4, 0.04) 100%),linear-gradient(482deg, rgba(36, 36, 36, 0.04) 0%, rgba(36, 36, 36, 0.04) 20%,rgba(91, 91, 91, 0.04) 20%, rgba(91, 91, 91, 0.04) 100%),linear-gradient(259deg, rgb(3,7,39),rgb(18,140,212))",
           fontFamily: "Ubuntu",
           height: "100vh",
 
         }}
         //   className="maiii"
       >
-        <p>
-          <h2
+        <Navbar />
+          {/* <h2
             className="heading"
             style={{
-              color: "#FBFBFB",
               margin: "1.5rem 0",
               position: "absolute",
               left: "2rem",
@@ -56,8 +58,7 @@ const Hackathons = () => {
           >
             Hackathons
           </h2>
-        </p>
-        <hr style={{ color: "white", height: "5rem" }} />
+        <hr style={{ color: "white", height: "5rem" }} /> */}
         <Card
           className="HackiCard"
           sx={{
@@ -66,16 +67,17 @@ const Hackathons = () => {
             flexDirection: "flex-start",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#2E2532",
+            backgroundColor: "#f5",
             boxShadow: "0 0 10px 5px rgba(0, 0, 0, 0.2)",
             transition: "box-shadow 0.3s ease-in-out",
             margin: "2rem",
             position:'absolute',
-            left:'28vw'
+            left:'28vw',
+            marginTop: '3em',
           }}
         >
           <CardMedia
-            sx={{ height: 200, width: 300, margin: "1rem" }}
+            sx={{ height: 200, width: 300, margin: "2rem",borderRadius: 2 }}
             image="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=600"
             title="green iguana"
           />
@@ -84,14 +86,13 @@ const Hackathons = () => {
               gutterBottom
               variant="h5"
               component="div"
-              style={{ color: "#FBFBFB" }}
             >
               Trident Hacks : National Level hackathon
             </Typography>
             <div sx={{  width: 300 , display:'flex', flexDirection:'flex-start' }}>
-              <TimeButton>Upcoming</TimeButton>
-              <Button style={{ color: "#FBFBFB" }}>
-                <LanguageOutlinedIcon sx={{ m: "0.7rem" }} />
+              <TimeButton className="navButton" sx={{fontSize: '1em', border: '2px solid #330867'}}>Upcoming</TimeButton>
+              <Button style={{ color: "#000" }}>
+                <LanguageOutlinedIcon sx={{ m: "0.7rem",color: '#000' }} />
                 Online
               </Button>
             </div>
@@ -99,13 +100,13 @@ const Hackathons = () => {
           Lizards are a widespread group of squamate reptiles, with over 6,000
           species, ranging across all continents except Antarctica
         </Typography> */}
-            <h4 style={{ color: "#FBFBFB" ,margin:'0 1rem 0.3rem 0 ', letterSpacing:2}}>Registration Deadline : 22/22/2222</h4>
+            <h4 style={{ margin:'0 1rem 0.3rem 0 ', letterSpacing:2}}>Registration Deadline : 22/22/2222</h4>
             <CardActions style={{  position:'relative', left:'2rem'}}>
-              <LocationOnOutlinedIcon size="small" style={{ color: "#FBFBFB", position:'relative' }}/>
-                <span style={{ color: "#FBFBFB" ,marginRight:'1rem'}}>Location</span>
-              <EmojiEventsOutlinedIcon size="small" style={{ color: "#FBFBFB",}}/>
-              <span style={{ color: "#FBFBFB" ,marginRight:'1rem'}}>Prize</span>
-              <Button size="small" style={{ color: "#FBFBFB" }}>
+              <LocationOnOutlinedIcon size="small" style={{ position:'relative' }}/>
+                <span style={{ marginRight:'1rem'}}>Location</span>
+              <EmojiEventsOutlinedIcon size="small"/>
+              <span style={{ marginRight:'1rem'}}>Prize</span>
+              <Button size="small" style={{ color: "#000" }}>
                 Learn More
               </Button>
             </CardActions>

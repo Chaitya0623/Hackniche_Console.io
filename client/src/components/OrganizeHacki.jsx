@@ -9,7 +9,7 @@ import Essentials from "./Essentials";
 import Submissions from "./Submissions";
 import OrgDetails from "./OrgDetails";
 import "./OrganizeHacki.css";
-
+import {Navbar} from './Navbar';
 
 const prevStyle = {
   borderRadius: "3rem",
@@ -26,38 +26,25 @@ const OrganizeHacki = () => {
         style={{
           backgroundColor: "#201A23",
           fontFamily: "Ubuntu",
-          height: "140vh",
+          margin:0 
+          // height: "60vh",
         }}
       >
-        <p>
-          <h2
-            className="heading"
-            style={{
-              color: "#FBFBFB",
-              margin: "1.5rem 0",
-              position: "absolute",
-              left: "2rem",
-              fontSize: "2rem",
-              letterSpacing: "2",
-            }}
-          >
-            Organize Hackathon
-          </h2>
-        </p>
-        <hr style={{ color: "white", height: "5rem" }} />
+        <Navbar/>
         <div
           style={{
             backgroundColor: "#201A23",
             fontFamily: "Ubuntu",
-            height: "100vh",
+            height: "100vh",position:"relative",left:"34rem"
           }}
         >
+          {/* <Navbar/> */}
           <MultiStep
             activeStep={1}
             showNavigation={true}
-            prevStyle={prevStyle}
-            nextStyle={prevStyle}
-            style={{ display: "flex", justifyContent: "center" }}
+            // prevStyle={prevStyle}
+            // nextStyle={prevStyle}
+            sx={{ display: "flex", justifyContent: "center" }}
           >
             <Essentials title="Essentials" />
             <Submissions title="Submissions" />

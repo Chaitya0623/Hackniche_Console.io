@@ -196,7 +196,7 @@ const Home = () => {
   //   );
 
   return (
-    <Paper style={imgStyle}>
+    <Paper style={imgStyle} sx={{overflow: 'hidden'}}>
       <Navbar/>
       <div
         style={{
@@ -207,7 +207,7 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           position: "relative",
-          top: "5rem",
+          top: "12rem",
           left: "5rem",
         //   opacity: "0.8",
         }}
@@ -219,7 +219,7 @@ const Home = () => {
           // justifyContent: "flex-start",
           alignItems:'flex-start',
           position: "relative",
-          top: "-10rem",
+          top: "-5rem",
           left:'40vw',
           color: "white",
           fontSize:'4rem'
@@ -228,7 +228,7 @@ const Home = () => {
         <p style={{margin:'0 0'}}>Come for the code, </p>
         <p style={{margin:'0 0'}}>stay for the community.</p>
       </div>
-      <Toolbar style={searchStyle}>
+      <Toolbar style={searchStyle} sx={{marginTop: '5em'}}>
         <Search style={searchBarStyle}>
           <SearchIconWrapper>
             <SearchIcon style={{ color: "#9E4770" }} />

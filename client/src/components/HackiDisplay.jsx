@@ -16,7 +16,7 @@ import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import { Edit, HowToReg } from "@mui/icons-material";
 import { LocationOn, Person, Groups, DoubleArrow } from "@mui/icons-material";
 import { createTheme } from "@mui/material/styles";
-import { ButtonGroup } from "@mui/material"
+import { ButtonGroup } from "@mui/material";
 
 const HackiDisplay = () => {
   const TimeButton = styled(Button)({
