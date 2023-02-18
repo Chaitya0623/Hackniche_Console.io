@@ -24,92 +24,112 @@ import "react-multiple-select-dropdown-lite/dist/index.css";
 
 
 
-const Essentials = () => {
+const Essentials = (props) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  const { data,handleImageUpload, handleChange, next } = props;
 
   const fileTypes = ["JPEG", "PNG", "GIF"];
-  const [file, setFile] = useState(null);
-  const handleChange = (file) => {
-    setFile(file);
-  };
-  const [rule, setrule] = useState("");
-  const [data, setData] = useState({
-    logo: "",
-    title: "",
-    modeOfHacki: "",
-    organisation: "",
-    domian: "",
-    regiStart: "",
-    regiEnd: "",
-    hackiStart: "",
-    hackiEnd: "",
-    preferredSkills: "",
-    min: "",
-    max: "",
-    contactEmail:"",
-    discordLink: "",
-    instaLink: "",
-    linkedInLink: "",
-    rules: "",
-    price1:"",
-    price2:"",
-    price3:"",
-  });
+  // const [file, setFile] = useState(null);
+  // const handleChange = (file) => {
+  //   setFile(file);
+  // };
+  // const [domain, setdomain] = useState("");
+  //   const [data, setData] = useState({
+  //     logo: "",
+  //     title: "",
+  //     modeOfHacki: "",
+  //     organisation: "",
+  //     domian: "",
+  //     regiStart: "",
+  //     regiEnd: "",
+  //     hackiStart: "",
+  //     hackiEnd: "",
+  //     preferredSkills: "",
+  //     min: "",
+  //     max: "",
+  //     contactEmail:"",
+  //     discordLink: "",
+  //     instaLink: "",
+  //     linkedInLink: "",
+  //     rules: "",
+  //     price1:"",
+  //     price2:"",
+  //     price3:"",
+  //   });
 
-  const handleDomain = (val) => {
-    console.log(val);
-    console.log(rule);
-    setrule(val);
-    console.log(rule);
-    setData({ ...data, rules:val});
-  };
-const DomainOptions = [
-  { label: "Web Development", value: "Web Development" },
-  { label: "Blockchain", value: "Blockchain" },
-  { label: "AI/ML", value: "AI/ML" },
-  { label: "IoT", value: "IoT" },
-  { label: "Cloud", value: "Cloud" },
-  { label: "Cybersecurity", value: "Cybersecurity" },
-  { label: "Design", value: "Design" },
-  { label: "DevOps", value: "DevOps" },
-  ];
+  // const handleDomain = (val) => {
+  //   console.log(val);
+  //   setdomain(val);
+  //   console.log(domain);
+  //   setData({ ...data, domain:val});
+  // };
+
+  // const handleImageUpload = (e) => {
+  //   console.log("Handle Image Upload");
+  //   console.log(e.target.files[0]);
+  //   console.log(e.target.files[0].name);
+  //   setData({...data , image:e.target.files[0]})
+  // }
+
+  // const handleChange = (e) => {
+  //   console.log(e.target.name, e.target.value);
+  //   setData({ ...data, [e.target.name]: e.target.value });
+  // };
+
+
+  const DomainOptions = [
+    { label: "Web Development", value: "Web Development" },
+    { label: "Blockchain", value: "Blockchain" },
+    { label: "AI/ML", value: "AI/ML" },
+    { label: "IoT", value: "IoT" },
+    { label: "Cloud", value: "Cloud" },
+    { label: "Cybersecurity", value: "Cybersecurity" },
+    { label: "Design", value: "Design" },
+    { label: "DevOps", value: "DevOps" },
+  ];
 
   return (
     <>
-    <Paper style={{width:'78vw', position:'relative', left:'10vw',borderRadius:5,height:400}}>
-      <Box style={{ backgroundColor: "white" }}>
+      <Paper style={{ width: '78vw', position: 'relative', right: '20vw', top: '5rem', borderRadius: 5, height: 400 }}>
+        <Box style={{ backgroundColor: "white" }}>
 
-        <Grid container spacing={4} style={{padding:'3rem', margin:'rem 0'}}>
-          <Grid item xs={6} style={{}}>
-            <Box sx={{display:"flex"}}>
-            <Box>
-          <p style={{ color: "#9E4770" ,marginRight:'46em'}}>Hackathon Logo</p>
-          <FileUploader
-          multiple={true}
-          handleChange={handleChange}
-          name="file"
-          types={fileTypes}
-        />
-        <p style={{marginRight:'28.5em',marginTop:'0.8em',marginRight:'43em'}}> {file ? `File name: ${file[0].name}` : "No files uploaded yet"}</p>
-          <TextField
-            id="outlined-search"
-            label="Hackathon Name"
-            name="title"
-            type="search"
-            required
-            style={{ color: "white" , marginBottom:'1.8rem',marginTop:'1rem',width:'33.5em',marginRight:'20rem'}}
-          />
-          <TextField
-            id="outlined-search"
-            label="Hackathon Organisation"
-            name="title"
-            type="search"
-            required
-            style={{ color: "white" , marginBottom:'2rem',width:'33.5em',marginRight:'20rem'}}
-          />
-          </Box>
-          <Box>
-          <Box
+          <Grid container spacing={4} style={{ padding: '3rem', margin: 'rem 0' }}>
+            <Grid item xs={6} style={{}}>
+              <Box sx={{ display: "flex" }}>
+                <Box>
+                  <p style={{ color: "#9E4770", marginRight: '46em' }}>Hackathon Logo</p>
+                  <FileUploader
+                    multiple={true}
+                    type="file"
+                    handleChange={handleImageUpload}
+                    name="logo"
+                    value={data.logo}
+                    // types={fileTypes}
+                  />
+                  {/* <p style={{marginRight:'28.5em',marginTop:'0.8em',marginRight:'43em'}}> {file ? `File name: ${file[0].name}` : "No files uploaded yet"}</p> */}
+                  <TextField
+                    id="outlined-search"
+                    label="Hackathon Name"
+                    name="title"
+                    value={data.title}
+                    // type="search"
+                    onChange={handleChange}
+                    required
+                    style={{ color: "white", marginBottom: '1.8rem', marginTop: '1rem', width: '33.5em', marginRight: '20rem' }}
+                  />
+                  <TextField
+                    id="outlined-search"
+                    label="Hackathon Organisation"
+                    name="organisation"
+                    onChange={handleChange}
+                    value={data.organisation}
+                    type="search"
+                    required
+                    style={{ color: "white", marginBottom: '2rem', width: '33.5em', marginRight: '20rem' }}
+                  />
+                </Box>
+                <Box>
+                  <Box
                     sx={{
                       display: "flex",
                       justifyContent: "center",
@@ -119,69 +139,75 @@ const DomainOptions = [
                       sx={{
                         marginRight: 2,
                       }}
-                      name="startDate"
+                      name="regiStart"
                       id="standard-basic"
                       variant="outlined"
                       type="date"
                       onChange={handleChange}
+                      value={data.regiStart}
                     />
                     <TextField
                       sx={{
                         marginLeft: 2,
                       }}
-                      name="endDate"
+                      name="regiEnd"
                       id="standard-basic"
                       variant="outlined"
                       type="date"
                       onChange={handleChange}
+                      value={data.regiEnd}
                     />
                   </Box>
-          <FormControl>
-            <FormLabel
-              id="demo-row-radio-buttons-group-label"
-              style={{ color: "#9E4770" }}
-            >
-              Mode Of Hackathon
-            </FormLabel>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-              style={{ marginBottom:'2rem'}}
-            >
-              <FormControlLabel
-                value="Online"
-                control={<Radio />}
-                label="Online"
-                name="modeOfHacki"
-              />
-              <FormControlLabel
-                value="Offline"
-                control={<Radio />}
-                label="Offline"
-                name="modeOfHacki"
-              />
-            </RadioGroup>
-          </FormControl>
-          <MultiSelect
+                  <FormControl>
+                    <FormLabel
+                      id="demo-row-radio-buttons-group-label"
+                      style={{ color: "#9E4770" }}
+                    >
+                      Mode Of Hackathon
+                    </FormLabel>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-row-radio-buttons-group-label"
+                      name="row-radio-buttons-group"
+                      style={{ marginBottom: '2rem' }}
+                      onChange={handleChange}
+                      value={data.modeOfHacki}
+                    >
+                      <FormControlLabel
+                        value="Online"
+                        control={<Radio />}
+                        label="Online"
+                        name="modeOfHacki"
+                      />
+                      <FormControlLabel
+                        value="Offline"
+                        control={<Radio />}
+                        label="Offline"
+                        name="modeOfHacki"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                  <MultiSelect
                     sx={{ backgroundColor: "#fff", marginTop: 3 }}
-                    name="rules"
+                    name="domain"
                     placeholder="Domains"
                     className="multi-select"
-                    onChange={handleDomain}
-                    options={DomainOptions}
-                    />
-          </Box>
-          </Box>
-          {/* <p style={{ color: "#9E4770" }}>
+                    value={data.domain}
+                  onChange={handleChange}
+                  options={DomainOptions}
+                  />
+                </Box>
+              </Box>
+              <button onClick={next}>Next</button>
+              {/* <p style={{ color: "#9E4770" }}>
             When does your hackathon submission period begin?
           </p>
           <p style={{ color: "#9E4770" }}>
           (This is the
             expected day participants will start building.)
           </p> */}
-          
-          {/* <p style={{ color: "#9E4770" }}>Name of your organisation(if any)</p>
+
+              {/* <p style={{ color: "#9E4770" }}>Name of your organisation(if any)</p>
           <TextField
             id="outlined-search"
             label="Organisation Name"
@@ -189,8 +215,8 @@ const DomainOptions = [
             required
             style={{ color: "white" }}
           /> */}
-          
-          {/* <form
+
+              {/* <form
             className="inputBox"
             style={{
               display: "flex",
@@ -200,8 +226,8 @@ const DomainOptions = [
             }}
           >
             </form> */}
-          </Grid>
-          {/* <Grid item xs={6}>
+            </Grid>
+            {/* <Grid item xs={6}>
           <Typography
               sx={{
                 color: "#9E4770",
@@ -397,10 +423,10 @@ const DomainOptions = [
               </Grid>
             </FormGroup>
           </Grid> */}
-        </Grid>
+          </Grid>
 
-      </Box>
-    </Paper>
+        </Box>
+      </Paper>
     </>
   );
 };

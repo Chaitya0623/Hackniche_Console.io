@@ -486,7 +486,7 @@ const Login = () => {
                   padding: "1rem",
                 }}
               >
-                <p style={{ color: "gray" }}>START FOR FREE</p>
+                {/* <p style={{ color: "gray" }}>START FOR FREE</p> */}
                 <h1 style={{ margin: "4px 0", color:"gray" }}>Create new account</h1>
                 <span style={{ color: "gray" }}>
                   Already A Member?{" "}

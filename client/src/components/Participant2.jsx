@@ -28,8 +28,7 @@ const Participant2 = () => {
         elevation={5}
         style={{
           width: "80vw",
-          position: "relative",
-          left: "10vw",
+          position:'relative', right:'22vw',
           marginBottom: "2rem",
         }}
       >

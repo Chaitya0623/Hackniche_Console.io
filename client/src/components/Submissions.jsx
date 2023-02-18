@@ -20,12 +20,39 @@ import FormGroup from "@mui/material/FormGroup";
 import Grid from "@mui/material/Grid";
 // import Particle from "./Particle";
 
-const Submissions = () => {
+const Submissions = (props) => {
+  const {data,handleImageUpload,handleChange,next,back}=props;
+//   const [data, setData] = useState({
+//     logo: "",
+//     title: "",
+//     modeOfHacki: "",
+//     organisation: "",
+//     domian: "",
+//     regiStart: "",
+//     regiEnd: "",
+//     hackiStart: "",
+//     hackiEnd: "",
+//     preferredSkills: "",
+//     min: "",
+//     max: "",
+//     contactEmail:"",
+//     discordLink: "",
+//     instaLink: "",
+//     linkedInLink: "",
+//     rules: "",
+//     price1:"",
+//     price2:"",
+//     price3:"",
+//   });
+//   const handleChange = (e) => {
+//     console.log(e.target.name, e.target.value);
+//     setData({ ...data, [e.target.name]: e.target.value });
+//   };
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   return (
     <>
       {/* <Particle /> */}
-      <Paper elevation={5} style={{width:'80vw', position:'relative', left:'10vw', marginBottom:'2rem'}}>
+      <Paper elevation={5} style={{width:'80vw', position:'relative', right:'22vw', marginBottom:'2rem'}}>
         <div style={{ backgroundColor: "white" }}>
           <Grid
             container
@@ -47,7 +74,10 @@ const Submissions = () => {
                   <TextField
                     id="outlined-search"
                     label="min"
+                    name="min"
                     type="search"
+                    value={data.min}
+                    onChange={handleChange}
                     required
                     style={{
                       color: "white",
@@ -60,7 +90,10 @@ const Submissions = () => {
                   <TextField
                     id="outlined-search"
                     label="max"
+                    name="max"
                     type="search"
+                    value={data.max}
+                    onChange={handleChange}
                     required
                     style={{
                       color: "white",
@@ -74,6 +107,9 @@ const Submissions = () => {
                 <p style={{ color: "#9E4770" }}>Start of Submission period</p>
                 <TextField
                   id="outlined-search"
+                  name="hackiStart"
+                  value={data.hackiStart}
+                    onChange={handleChange}
                   // label="Hackathon Date"
                   type="date"
                   required
@@ -82,6 +118,9 @@ const Submissions = () => {
                 <p style={{ color: "#9E4770" }}>Submission Deadline</p>
                 <TextField
                   id="outlined-search"
+                  name="hackiEnd"
+                  value={data.hackiEnd}
+                    onChange={handleChange}
                   // label="Hackathon Date"
                   type="date"
                   required
@@ -108,6 +147,9 @@ const Submissions = () => {
                     style={{ display: "flex", flexDirection: "column" }}
                   >
                     <FormControlLabel
+                    name='preferredSkills'
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -122,6 +164,9 @@ const Submissions = () => {
                       label="Gaming"
                     />
                     <FormControlLabel
+                    name="preferredSkills"
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -136,6 +181,9 @@ const Submissions = () => {
                       label="Web "
                     />
                     <FormControlLabel
+                    name="preferredSkills"
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -150,6 +198,9 @@ const Submissions = () => {
                       label="Machine Learning"
                     />
                     <FormControlLabel
+                    name="preferredSkills"
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -164,6 +215,9 @@ const Submissions = () => {
                       label="Databases"
                     />
                     <FormControlLabel
+                    name="preferredSkills"
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -178,6 +232,9 @@ const Submissions = () => {
                       label="Cloud"
                     />
                     <FormControlLabel
+                    name="preferredSkills"
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -198,6 +255,9 @@ const Submissions = () => {
                     style={{ display: "flex", flexDirection: "column" }}
                   >
                     <FormControlLabel
+                    name="preferredSkills"
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -212,6 +272,9 @@ const Submissions = () => {
                       label="Blockchain"
                     />
                     <FormControlLabel
+                    name="preferredSkills"
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -226,6 +289,9 @@ const Submissions = () => {
                       label="Cybersecurity"
                     />
                     <FormControlLabel
+                    name="preferredSkills"
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -240,6 +306,9 @@ const Submissions = () => {
                       label="DevOps"
                     />
                     <FormControlLabel
+                    name="preferredSkills"
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -254,6 +323,9 @@ const Submissions = () => {
                       label="Musin/Art"
                     />
                     <FormControlLabel
+                    name="preferredSkills"
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -268,6 +340,9 @@ const Submissions = () => {
                       label="Design"
                     />
                     <FormControlLabel
+                    name="preferredSkills"
+                    onChange={handleChange}
+                    value={data.preferredSkills}
                       control={
                         <Checkbox
                           {...label}
@@ -286,6 +361,8 @@ const Submissions = () => {
               </FormGroup>
             </Grid>
           </Grid>
+          <button onClick={next}>Next</button>
+          <button onClick={back}>Back</button>
         </div>
       </Paper>
     </>

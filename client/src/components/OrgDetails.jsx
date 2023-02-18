@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import * as React from "react";
-import { Paper, Typography,Button } from "@mui/material";
+import { Paper, Typography, Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import MultiStep from "react-multistep";
 import TextField from "@mui/material/TextField";
@@ -20,63 +20,71 @@ import FormGroup from "@mui/material/FormGroup";
 import Grid from "@mui/material/Grid";
 // import { styled, alpha } from "@mui/material/styles";
 
-const OrgDetails = () => {
-
-    const SubmitButton = styled(Button)({
-        backgroundColor: "#2E2532",
-        margin: "1rem",
-        borderRadius: "3rem",
-        marginLeft: "1.2rem",
-        textDecoration: "none",
-        padding: "12px 15px ",
-        width: "10rem",
-        color: "white",
-        fontSize: "0.8rem",
-        position:'relative',
-        bottom:'3rem',
-        "&:hover": { backgroundColor: "#5E9387", color: "white" },
-      });
-    return (
-      <>
-      <Paper elevation={3} style={{border:'2px solid black', width:'40vw', position:'relative', left:'30vw', marginBottom:'2rem'}}>
-        <div style={{ backgroundColor: "white" ,padding:'3rem', margin:'1rem 0'}}>
-        <p style={{ color: "#9E4770" }}>Enter Contact Email</p>
-        <TextField
-          id="outlined-search"
-          label="Contact Email"
-          type="search"
-          required
-          style={{ color: "white" , marginBottom:'2rem'}}
-        />
-        <p style={{ color: "#9E4770" }}>Enter Discord link</p>
-        <TextField
-          id="outlined-search"
-          label="Discord"
-          type="search"
-          required
-          style={{ color: "white" , marginBottom:'2rem'}}
-        />
-        <p style={{ color: "#9E4770" }}>Enter Instagram Page link (if any)</p>
-        <TextField
-          id="outlined-search"
-          label="Instagram"
-          type="search"
-          required
-          style={{ color: "white" , marginBottom:'2rem'}}
-        />
-        <p style={{ color: "#9E4770" }}>Enter LinkedIn Page link (if any)</p>
-        <TextField
-          id="outlined-search"
-          label="LinkedIn"
-          type="search"
-          required
-          style={{ color: "white"}}
-        />
+const OrgDetails = (props) => {
+  const { data,handleImageUpload, handleChange, next, back } = props;
+  const SubmitButton = styled(Button)({
+    backgroundColor: "#2E2532",
+    margin: "1rem",
+    borderRadius: "3rem",
+    marginLeft: "1.2rem",
+    textDecoration: "none",
+    padding: "12px 15px ",
+    width: "10rem",
+    color: "white",
+    fontSize: "0.8rem",
+    position: 'relative',
+    bottom: '3rem',
+    "&:hover": { backgroundColor: "#5E9387", color: "white" },
+  });
+  return (
+    <>
+      <Paper elevation={3} style={{ border: '2px solid black', width: '35vw', position: 'relative', right: '2vw', marginBottom: '2rem' }}>
+        <div style={{ backgroundColor: "white", padding: '3rem', margin: '1rem 0' }}>
+          <p style={{ color: "#9E4770" }}>Enter Contact Email</p>
+          <TextField
+            id="outlined-search"
+            label="Contact Email"
+            type="search"
+            value={data.email}
+            onChange={handleChange}
+            required
+            style={{ color: "white", marginBottom: '2rem' }}
+          />
+          <p style={{ color: "#9E4770" }}>Enter Discord link</p>
+          <TextField
+            id="outlined-search"
+            label="Discord"
+            type="search"
+            value={data.discordLink}
+            onChange={handleChange}
+            required
+            style={{ color: "white", marginBottom: '2rem' }}
+          />
+          <p style={{ color: "#9E4770" }}>Enter Instagram Page link (if any)</p>
+          <TextField
+            id="outlined-search"
+            label="Instagram"
+            type="search"
+            value={data.instaLink}
+            onChange={handleChange}
+            required
+            style={{ color: "white", marginBottom: '2rem' }}
+          />
+          <p style={{ color: "#9E4770" }}>Enter LinkedIn Page link (if any)</p>
+          <TextField
+            id="outlined-search"
+            label="LinkedIn"
+            value={data.LinkedInLink}
+            onChange={handleChange}
+            type="search"
+            required
+            style={{ color: "white" }}
+          />
         </div>
-        <SubmitButton type="submit">Submit</SubmitButton>
-        </Paper>
-      </>
-    );
-  };
-  
-  export default OrgDetails;
+        <button onClick={next}>Next</button>
+        <button onClick={back}>Back</button>        </Paper>
+    </>
+  );
+};
+
+export default OrgDetails;

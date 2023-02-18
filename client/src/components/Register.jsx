@@ -10,6 +10,7 @@ import Participant2 from "./Participant2";
 import Participant3 from "./Participant3";
 import Participant4 from "./Participant4";
 import "./OrganizeHacki.css";
+import {Navbar} from './Navbar';
 
 const Register = () => {
     
@@ -29,7 +30,8 @@ const prevStyle = {
           height: "140vh",
         }}
       >
-        <p>
+        <Navbar/>
+        {/* <p>
           <h2
             className="heading"
             style={{
@@ -43,13 +45,15 @@ const prevStyle = {
           >
             Registration
           </h2>
-        </p>
-        <hr style={{ color: "white", height: "5rem" }} />
+        </p> */}
+        {/* <hr style={{ color: "white", height: "5rem" }} /> */}
         <div
           style={{
             backgroundColor: "#201A23",
             fontFamily: "Ubuntu",
             height: "100vh",
+            position:'relative',
+            left:'30vw'
           }}
         >
           <MultiStep
