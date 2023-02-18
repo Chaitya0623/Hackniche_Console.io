@@ -27,7 +27,8 @@ const prevStyle = {
         style={{
           backgroundColor: "#201A23",
           fontFamily: "Ubuntu",
-          height: "140vh",
+          height: "70vh",
+          border:'2px solid red'
         }}
       >
         <Navbar/>
@@ -51,12 +52,12 @@ const prevStyle = {
           style={{
             backgroundColor: "#201A23",
             fontFamily: "Ubuntu",
-            height: "100vh",
+            // height: "70vh",
             position:'relative',
             left:'30vw'
           }}
         >
-          <MultiStep
+          {/* <MultiStep
             activeStep={1}
             showNavigation={true}
             prevStyle={prevStyle}
@@ -67,7 +68,8 @@ const prevStyle = {
             <Participant2 title="Participant 2" />
             <Participant3 title="Participant 3" />
             <Participant4 title="Participant 4" />
-          </MultiStep>
+          </MultiStep> */}
+          
         </div>
       </Paper>
     </>

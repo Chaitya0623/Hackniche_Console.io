@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import * as React from "react";
-import { Paper, Typography } from "@mui/material";
+import { Paper, Typography, Button,} from "@mui/material";
 import Box from "@mui/material/Box";
 import MultiStep from "react-multistep";
 import TextField from "@mui/material/TextField";
@@ -18,9 +18,37 @@ import Checkbox from "@mui/material/Checkbox";
 import { pink } from "@mui/material/colors";
 import FormGroup from "@mui/material/FormGroup";
 import Grid from "@mui/material/Grid";
+import MultiSelect from "react-multiple-select-dropdown-lite";
+import "react-multiple-select-dropdown-lite/dist/index.css";
 
-const Participant1 = () => {
+const Participant1 = (props) => {
+  const DomainOptions = [
+    { label: "Web Development", value: "Web Development" },
+    { label: "Blockchain", value: "Blockchain" },
+    { label: "AI/ML", value: "AI/ML" },
+    { label: "IoT", value: "IoT" },
+    { label: "Cloud", value: "Cloud" },
+    { label: "Cybersecurity", value: "Cybersecurity" },
+    { label: "Design", value: "Design" },
+    { label: "DevOps", value: "DevOps" },
+  ];
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  const { data, handleChange, handleMulterShit, next } = props;
+  const SignupButton = styled(Button)({
+    backgroundColor: "#2E2532",
+    margin: "1rem",
+    borderRadius: "3rem",
+    marginLeft: "1.2rem",
+    textDecoration: "none",
+    padding: "12px 15px ",
+    width: "10rem",
+    color: "white",
+    fontSize: "0.8rem",
+    position:'relative',
+    left:'3rem',
+    top:'2rem',
+    "&:hover": { backgroundColor: "#5E9387", color: "white" },
+  });
   return (
     <>
       {/* <Particle /> */}
@@ -28,7 +56,8 @@ const Participant1 = () => {
         elevation={5}
         style={{
           width: "80vw",
-          position:'relative', right:'22vw',
+          position: "relative",
+          left: "8vw",
           marginBottom: "2rem",
         }}
       >
@@ -53,6 +82,8 @@ const Participant1 = () => {
                   id="outlined-search"
                   label="Name"
                   type="search"
+                  value={data.name}
+                  onChange={handleChange}
                   required
                   style={{ color: "white", marginBottom: "2rem" }}
                 />
@@ -61,15 +92,23 @@ const Participant1 = () => {
                   id="outlined-search"
                   label="Year"
                   type="search"
+                  value={data.year}
+                  onChange={handleChange}
                   required
                   style={{ color: "white", marginBottom: "2rem" }}
                 />
-                 <p style={{ color: "#9E4770" }}>Enter resume</p>
-                 <TextField
+                <p style={{ color: "#9E4770" }}>Enter resume</p>
+                <TextField
                   id="outlined-search"
                   type="file"
+                  value={data.resume}
+                  onChange={handleChange}
                   required
-                  style={{ color: "white", marginBottom: "2rem", width:'15rem' }}
+                  style={{
+                    color: "white",
+                    marginBottom: "2rem",
+                    width: "15rem",
+                  }}
                 />
               </div>
             </Grid>
@@ -91,185 +130,22 @@ const Participant1 = () => {
                     xs={6}
                     style={{ display: "flex", flexDirection: "column" }}
                   >
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="Gaming"
+                    <MultiSelect
+                      sx={{ backgroundColor: "#fff", marginTop: 3 }}
+                      name="domain"
+                      placeholder="Domains"
+                      className="multi-select"
+                      value={data.domain}
+                      onChange={handleChange}
+                      options={DomainOptions}
                     />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="Web "
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="Machine Learning"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="Databases"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="Cloud"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="IoT"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                    style={{ display: "flex", flexDirection: "column" }}
-                  >
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="Blockchain"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="Cybersecurity"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="DevOps"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="Musin/Art"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="Design"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          {...label}
-                          sx={{
-                            color: pink[800],
-                            "&.Mui-checked": {
-                              color: pink[600],
-                            },
-                          }}
-                        />
-                      }
-                      label="Low/No Code"
-                    />
+                    <SignupButton type="submit" onClick={next}>Next</SignupButton>
                   </Grid>
                 </Grid>
               </FormGroup>
             </Grid>
           </Grid>
+          {/* <button onClick={next}>Next</button> */}
         </div>
       </Paper>
     </>
