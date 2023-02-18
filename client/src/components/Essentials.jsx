@@ -25,7 +25,7 @@ import { Button } from "@mui/material";
 
 const Essentials = (props) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
-  const { data,handleImageUpload, handleChange, next } = props;
+  const { data,multer,handleImageUpload, handleChange, next } = props;
 
   const fileTypes = ["JPEG", "PNG", "GIF"];
   // const [file, setFile] = useState(null);
@@ -111,13 +111,22 @@ const Essentials = (props) => {
               <Box sx={{ display: "flex" }}>
                 <Box style={{position:'relative', right:'0rem'}}>
                   <p style={{ color: "#9E4770", marginRight: '46em' }}>Hackathon Logo</p>
-                  <FileUploader
+                  {/* <FileUploader
                     multiple={true}
                     type="file"
                     handleChange={handleImageUpload}
                     name="logo"
                     value={data.logo}
-                    // types={fileTypes}
+                  /> */}
+                  <TextField
+                    id="outlined-search"
+                    label="Hackathon Name"
+                    name="title"
+                    value={multer.logo}
+                    type="file"
+                    onChange={handleImageUpload}
+                    required
+                    style={{ color: "white", marginBottom: '1.8rem', marginTop: '1rem', width: '33.5em', marginRight: '20rem' }}
                   />
                   {/* <p style={{marginRight:'28.5em',marginTop:'0.8em',marginRight:'43em'}}> {file ? `File name: ${file[0].name}` : "No files uploaded yet"}</p> */}
                   <TextField

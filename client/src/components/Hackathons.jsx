@@ -90,7 +90,7 @@ const Hackathons = () => {
               Trident Hacks : National Level hackathon
             </Typography>
             <div sx={{  width: 300 , display:'flex', flexDirection:'flex-start' }}>
-              <TimeButton className="navButton" sx={{fontSize: '1em', border: '2px solid #330867'}}>Upcoming</TimeButton>
+              <TimeButton sx={{fontSize: '1em', color: 'white'}}>Upcoming</TimeButton>
               <Button style={{ color: "#000" }}>
                 <LanguageOutlinedIcon sx={{ m: "0.7rem",color: '#000' }} />
                 Online

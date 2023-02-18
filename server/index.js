@@ -6,6 +6,8 @@ const githubRoutes=require('./routes/githubRoutes')
 
 const adminRoutes = require('./routes/adminRoutes');
 const loginRoutes = require('./routes/loginRegRoutes');
+const hackiDetailRoutes = require('./routes/hackiDetailRoutes');
+const teamDetailRoutes = require('./routes/teamDetailRoutes');
 const bodyParser = require('body-parser');
 const { upload } = require("./middlewares/multer");
 
@@ -24,6 +26,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', loginRoutes);
 app.use('/admin', adminRoutes);
 app.use('/github',githubRoutes);
+app.use('/hacki',hackiDetailRoutes);
+app.use('/team',teamDetailRoutes);
 
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
