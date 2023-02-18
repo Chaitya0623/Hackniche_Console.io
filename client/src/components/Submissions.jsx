@@ -18,6 +18,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { pink } from "@mui/material/colors";
 import FormGroup from "@mui/material/FormGroup";
 import Grid from "@mui/material/Grid";
+import { Button } from "@mui/material";
 // import Particle from "./Particle";
 
 const Submissions = (props) => {
@@ -49,10 +50,22 @@ const Submissions = (props) => {
 //     setData({ ...data, [e.target.name]: e.target.value });
 //   };
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+    const SignupButton = styled(Button)({
+    backgroundColor: "#2E2532",
+    margin: "1rem",
+    borderRadius: "3rem",
+    marginLeft: "1.2rem",
+    textDecoration: "none",
+    padding: "12px 15px ",
+    width: "10rem",
+    color: "white",
+    fontSize: "0.8rem",
+    "&:hover": { backgroundColor: "#5E9387", color: "white" },
+  });
   return (
     <>
       {/* <Particle /> */}
-      <Paper elevation={5} style={{width:'80vw', position:'relative', right:'22vw', marginBottom:'2rem'}}>
+      <Paper elevation={5} style={{width:'80vw', position:'relative', left:'12vw', marginBottom:'2rem'}}>
         <div style={{ backgroundColor: "white" }}>
           <Grid
             container
@@ -361,8 +374,8 @@ const Submissions = (props) => {
               </FormGroup>
             </Grid>
           </Grid>
-          <button onClick={next}>Next</button>
-          <button onClick={back}>Back</button>
+          <SignupButton onClick={back} sx={{position: 'relative', bottom: '10em'}}>Back</SignupButton>
+          <SignupButton onClick={next} sx={{position: 'relative', bottom: '10em'}}>Next</SignupButton>
         </div>
       </Paper>
     </>

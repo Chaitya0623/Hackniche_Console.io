@@ -32,14 +32,62 @@ const OrgDetails = (props) => {
     width: "10rem",
     color: "white",
     fontSize: "0.8rem",
-    position: 'relative',
-    bottom: '3rem',
     "&:hover": { backgroundColor: "#5E9387", color: "white" },
   });
+      const SignupButton = styled(Button)({
+    backgroundColor: "#2E2532",
+    margin: "1rem",
+    borderRadius: "3rem",
+    marginLeft: "1.2rem",
+    textDecoration: "none",
+    padding: "12px 15px ",
+    width: "10rem",
+    color: "white",
+    fontSize: "0.8rem",
+    "&:hover": { backgroundColor: "#5E9387", color: "white" },
+  });
+  const handleSubmit = async (e) => {
+    console.log(data);
+    console.log(data.image, data.image.name);
+    console.log("Handle Submit");
+    e.preventDefault();
+    let url = "http://localhost:8080/hacki/addHackiDetails";
+    const formdata = new FormData();
+    formdata.append("file", data.image);
+    formdata.append("title", data.title);
+    formdata.append("modeOfHacki", data.modeOfHacki);
+    formdata.append("organisation", data.organisation);
+    formdata.append("domain", data.domain);
+    formdata.append("regiStart", data.regiStart);
+    formdata.append("regiEnd", data.regiEnd);
+    formdata.append("hackiStart", data.hackiStart);
+    formdata.append("hackiEnd", data.hackiEnd);
+    formdata.append("preferredSkills", data.preferredSkills);
+    formdata.append("min", data.min);
+    formdata.append("max", data.max);
+    formdata.append("contactEmail", data.contactEmail);
+    formdata.append("discordLink", data.discordLink);
+    formdata.append("instaLink", data.instaLink);
+    formdata.append("rules", data.rules);
+    formdata.append("price1", data.price1);
+    formdata.append("price2", data.price2);
+    formdata.append("price3", data.price3);
+    console.log("After appending in formData");
+    try {
+      let response = await axios.post(url, formdata);
+      if (response.status === 200) {
+        console.log(
+          "/client/addClientProfile API successfully called from frontend"
+        );
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <>
-      <Paper elevation={3} style={{ border: '2px solid black', width: '35vw', position: 'relative', right: '2vw', marginBottom: '2rem' }}>
-        <div style={{ backgroundColor: "white", padding: '3rem', margin: '1rem 0' }}>
+      <Paper elevation={5} style={{ width: '35vw', position: 'relative', left: '34vw', marginBottom: '5rem', top:'2rem' }}>
+        <div style={{ backgroundColor: "white", padding: '0.3rem', margin: '0.5rem 0' }}>
           <p style={{ color: "#9E4770" }}>Enter Contact Email</p>
           <TextField
             id="outlined-search"
@@ -81,8 +129,9 @@ const OrgDetails = (props) => {
             style={{ color: "white" }}
           />
         </div>
-        <button onClick={next}>Next</button>
-        <button onClick={back}>Back</button>        </Paper>
+        <SignupButton onClick={back}>Back</SignupButton> 
+        <SubmitButton onClick={handleSubmit}>Submit</SubmitButton>
+               </Paper>
     </>
   );
 };

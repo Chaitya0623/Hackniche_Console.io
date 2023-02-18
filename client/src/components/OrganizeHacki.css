@@ -1,6 +1,6 @@
-body{
+/* body{
     color:white;
-}
+} */
 
 .placeholder-colorer::placeholder{
     color: white;
@@ -10,3 +10,6 @@ body{
     color:#9E4770;
 }
 
+.fixing {
+    text-decoration: none !important;
+}
