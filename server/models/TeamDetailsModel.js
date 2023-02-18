@@ -5,27 +5,28 @@ const Schema = mongoose.Schema;
 
 const TeamDetailsSchema = new Schema({
     teamName:{type:String},
+    hackiName:{type:String},
     name1:{type:String},
     resume1:{type:String},
-    skills1:{type:String},
+    domain1:{type:String},
     glink1:{type:String},
     year1: {type:String},
 
     name2: {type:String},
     resume2:{type:String},
-    skills2: {type:String},
+    domain2: {type:String},
     glink2: {type:String},
     year2: {type:String},
 
     name3: {type:String},
     resume3:{type:String},
-    skills3:{type:String},
+    domain3:{type:String},
     glink3: {type:String},
     year3: {type:String},
 
     name4: {type:String},
     resume4: {type:String},
-    skills4:{type:String},
+    domain4:{type:String},
     glink4: {type:String},
     year4: {type:String},
 });

@@ -9,7 +9,7 @@ const loginRoutes = require('./routes/loginRegRoutes');
 const hackiDetailRoutes = require('./routes/hackiDetailRoutes');
 const teamDetailRoutes = require('./routes/teamDetailRoutes');
 const bodyParser = require('body-parser');
-const { upload } = require("./middlewares/multer");
+const { upload } = require("./middlewares/multerTeam");
 
 
 mongoose.set("strictQuery", true);
@@ -28,6 +28,9 @@ app.use('/admin', adminRoutes);
 app.use('/github',githubRoutes);
 app.use('/hacki',hackiDetailRoutes);
 app.use('/team',teamDetailRoutes);
+
+app.use(express.static('TeamPDF'))
+app.use(express.static('HackiLogo'))
 
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);

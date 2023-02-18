@@ -16,6 +16,8 @@ import Submit from "./SubmitMultiStep";
 const MultiStepForm2 = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
+    teamName:"",
+    hackiName:"",
     name1: "",
     name2: "",
     name3: "",
@@ -131,7 +133,7 @@ const MultiStepForm2 = () => {
     default:
       return (
         <>
-          <Submit data={formData} back={back} />;
+          {/* <Submit data={formData} back={back} />; */}
           <button onClick={back}>Back</button>
         </>
       );

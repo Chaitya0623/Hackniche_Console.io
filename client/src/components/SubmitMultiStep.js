@@ -9,9 +9,9 @@ const Submit = (props) => {
     console.log(data.image, data.image.name);
     console.log("Handle Submit");
     e.preventDefault();
-    let url = "http://localhost:3000/client/addClientProfile";
+    let url = "http://localhost:8080/hacki/addHackiDetail";
     const formdata = new FormData();
-    formdata.append("file", data.image);
+    // formdata.append("file", data.image);
     formdata.append("name", data.name);
     formdata.append("contact", data.contact);
     formdata.append("email", data.email);
@@ -39,7 +39,7 @@ const Submit = (props) => {
         fontFamily: "Ubuntu",
       }}
     >
-      <button type="submit">Submit</button>
+      <button type="submit" onClick={handleSubmit}>Submit</button>
       <button >Back</button>
     </div>
   );

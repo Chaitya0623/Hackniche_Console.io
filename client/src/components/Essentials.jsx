@@ -25,7 +25,7 @@ import { Button } from "@mui/material";
 
 const Essentials = (props) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
-  const { data,multer,handleImageUpload, handleChange, next } = props;
+  const { data,handleImageUpload, handleChange, next } = props;
 
   const fileTypes = ["JPEG", "PNG", "GIF"];
   // const [file, setFile] = useState(null);
@@ -122,7 +122,7 @@ const Essentials = (props) => {
                     id="outlined-search"
                     label="Hackathon Name"
                     name="title"
-                    value={multer.logo}
+                    disabled="true"
                     type="file"
                     onChange={handleImageUpload}
                     required
@@ -151,7 +151,7 @@ const Essentials = (props) => {
                   />
                 </Box>
                 <Box sx={{position: 'relative',
-                      right: '20vw', 
+                      right: '8vw', 
                       top: '10vh'}}>
                   <Box
                     sx={{

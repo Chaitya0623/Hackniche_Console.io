@@ -77,12 +77,24 @@ const Participant1 = (props) => {
                   bottom: "3rem",
                 }}
               >
+                <p style={{ color: "#9E4770" }}>Enter Team Name</p>
+                <TextField
+                  id="outlined-search"
+                  label="TeamName"
+                  type="search"
+                  name="teamName"
+                  value={data.teamName}
+                  onChange={handleChange}
+                  required
+                  style={{ color: "white", marginBottom: "2rem" }}
+                />
                 <p style={{ color: "#9E4770" }}>Enter Leader Name</p>
                 <TextField
                   id="outlined-search"
                   label="Name"
                   type="search"
-                  value={data.name}
+                  name="name1"
+                  value={data.name1}
                   onChange={handleChange}
                   required
                   style={{ color: "white", marginBottom: "2rem" }}
@@ -92,7 +104,8 @@ const Participant1 = (props) => {
                   id="outlined-search"
                   label="Year"
                   type="search"
-                  value={data.year}
+                  name="year1"
+                  value={data.year1}
                   onChange={handleChange}
                   required
                   style={{ color: "white", marginBottom: "2rem" }}
@@ -101,7 +114,8 @@ const Participant1 = (props) => {
                 <TextField
                   id="outlined-search"
                   type="file"
-                  value={data.resume}
+                  name="resume1"
+                  value={data.resume1}
                   onChange={handleChange}
                   required
                   style={{
@@ -132,10 +146,10 @@ const Participant1 = (props) => {
                   >
                     <MultiSelect
                       sx={{ backgroundColor: "#fff", marginTop: 3 }}
-                      name="domain"
+                      name="domain1"
                       placeholder="Domains"
                       className="multi-select"
-                      value={data.domain}
+                      value={data.domain1}
                       onChange={handleChange}
                       options={DomainOptions}
                     />

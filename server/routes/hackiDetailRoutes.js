@@ -6,11 +6,11 @@ const {
   deleteHackiDetail,
   } = require("../controllers/hackiDetailController");
   
-  const { upload } = require("../middlewares/multer");
+  const { upload } = require("../middlewares/multerHacki");
   const express = require("express");
   const router = express.Router();
   
-  router.post("/addHackiDetail", upload.single("file"), addHackiDetail);
+  router.post("/addHackiDetail", addHackiDetail);
   router.get("/allHackiDetails", getHackiDetails);
   router.get("/:email", getHackiDetail);
   router.get("/:id", getHackiDetail);

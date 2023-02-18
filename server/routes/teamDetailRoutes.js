@@ -6,11 +6,11 @@ const {
     deleteTeamDetail,
     } = require("../controllers/teamDetailsController");
     
-    const { upload } = require("../middlewares/multer");
+    const { upload } = require("../middlewares/multerTeam");
     const express = require("express");
     const router = express.Router();
     
-    router.post("/addTeamDetail", upload.single("file"), addTeamDetail);
+    router.post("/addTeamDetail/:id", upload.single("file"), addTeamDetail);
     router.get("/allTeamDetails", getTeamDetails);
     router.get("/:email", getTeamDetail);
     router.get("/:id", getTeamDetail);

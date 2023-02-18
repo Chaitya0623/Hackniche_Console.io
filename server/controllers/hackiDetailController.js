@@ -29,7 +29,6 @@ const addHackiDetail = async (request, response) => {
   } = request.body;
 
   const hackiDetail = {
-    logo,
     title,
     modeOfHacki,
     organisation,
@@ -53,7 +52,6 @@ const addHackiDetail = async (request, response) => {
   // }
 
   const newHackiDetail = new HackiDetailModel({
-    logo,
     title,
     modeOfHacki,
     organisation,

@@ -105,7 +105,7 @@ export const Navbar = () => {
           }}
         >
           <Typography variant="h6" style={{ color: "black",display:"flex" }}>
-          <Typography variant="h6" classname='navButton' style={{ color: "#330867" }}>Home</Typography> Page
+          <Typography variant="h6" classname='navButton' onClick={()=>navigate('/')} style={{ color: "#330867" }}>Home</Typography> Page
           </Typography>
           <Box flexGrow={1} />
           <SignupButton onClick={()=>navigate('/hackathons/organize')} className='navButton'>Organize Hackathon</SignupButton>

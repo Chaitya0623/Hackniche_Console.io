@@ -47,13 +47,13 @@ const OrgDetails = (props) => {
     "&:hover": { backgroundColor: "#5E9387", color: "white" },
   });
   const handleSubmit = async (e) => {
-    console.log(data);
-    console.log(data.image, data.image.name);
     console.log("Handle Submit");
+    console.log(data);
+    // console.log(data.image, data.image.name);
     e.preventDefault();
-    let url = "http://localhost:8080/hacki/addHackiDetails";
+    let url = "http://localhost:8080/hacki/addHackiDetail";
     const formdata = new FormData();
-    formdata.append("file", data.image);
+    // formdata.append("file", data.image);
     formdata.append("title", data.title);
     formdata.append("modeOfHacki", data.modeOfHacki);
     formdata.append("organisation", data.organisation);

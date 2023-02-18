@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import * as React from "react";
 import "./HackiDisplay.css";
@@ -19,6 +19,26 @@ import { createTheme } from "@mui/material/styles";
 import { ButtonGroup } from "@mui/material";
 
 const HackiDisplay = () => {
+
+  const idStored = localStorage.getItem("_id");
+// console.log(emailStored);
+
+  const [hackiDetail, sethackiDetail] = useState([]);
+
+  useEffect(() => {
+    gethackiDetail();
+  }, []);
+
+  const gethackiDetail = async () => {
+    try {
+      let response = await axios.get(`http://localhost:8080/allHackiDetails`);
+      console.log(response.data);
+      sethackiDetail(response.data);
+    } catch (error) {
+      console.log("Error while calling gethackiDetail API");
+    }
+  };
+
   const TimeButton = styled(Button)({
     backgroundColor: "#2E2532",
     margin: "1rem",
@@ -47,7 +67,7 @@ const HackiDisplay = () => {
     <Button key="min"><Person /> &nbsp; Min: 2</Button>,
     <Button key="max"><Groups /> &nbsp; Max: 4</Button>
   ];
-  
+  const navigate=useNavigate();
   return (
     <>
     <ThemeProvider theme={theme}>
@@ -97,13 +117,16 @@ const HackiDisplay = () => {
                 Edit
               </Button>
             <Typography gutterBottom variant="h2" component="div" style={{color:'#FBFBFB'}}>
-              Trident Hacks : National Level hackathon
+              {hackiDetail.title}
             </Typography>
             <Box sx={{display: 'flex', justifyContent: 'space-around'}}>
                 <Box sx={{border: '2px solid #018abd', marginRight: '2em', borderRadius: '1em'}}>
                 <Typography gutterBottom variant="h5" component="div" style={{color:'#FBFBFB', marginTop: '1em', marginLeft: '1em', marginRight: '1em'}}>
-                <LocationOn />
-                &nbsp; Dwarkadas J. Sanghvi College of Engineering
+                <Button href='https://meet.google.com/vkj-agxx-iwe'
+                className="HackiButton" style={{backgroundColor:'#fff', color: '#2E2532', height: '2em', margin: '1em', marginTop: '1.3em'}}>
+                  <HowToReg />Meet Link
+                </Button>
+                &nbsp; {hackiDetail.organisation}
             </Typography>
             <div sx={{ display: "flex", width: 300 }}>
               <TimeButton>
@@ -111,7 +134,7 @@ const HackiDisplay = () => {
               </TimeButton>
               <Button style={{color:'#FBFBFB'}}>
                 <LanguageOutlinedIcon sx={{m:'0.7rem'}}/>
-                Online
+                {hackiDetail.modeOfHacki}
               </Button>
             </div>
             <ButtonGroup color="white" aria-label="large button group" sx={{margin: '1em'}}>
@@ -127,7 +150,7 @@ const HackiDisplay = () => {
                 Start-Date: &nbsp;
                 </Typography>
                 <Typography variant="h7" style={{color:'#FBFBFB', marginTop: '0.5em'}}>
-                22-22-2022
+                {hackiDetail.hackiStart}
                 </Typography>
                 <Typography variant="h7" style={{color:'#FBFBFB', marginTop: '0.5em'}}>
                 &nbsp; | &nbsp;
@@ -136,7 +159,7 @@ const HackiDisplay = () => {
                 End-Date: &nbsp;
                 </Typography>
                 <Typography variant="h7" style={{color:'#FBFBFB', marginTop: '0.5em'}}>
-                22-22-2022
+                {hackiDetail.hackiEnd}
                 </Typography>
             </Box>
                 <Typography variant="h5" style={{color:'#FBFBFB', marginTop: '0.5em'}}>
@@ -147,7 +170,7 @@ const HackiDisplay = () => {
                 Start-Date: &nbsp;
                 </Typography>
                 <Typography variant="h7" style={{color:'#FBFBFB', marginTop: '0.5em'}}>
-                22-22-2022
+                {hackiDetail.regStart}
                 </Typography>
                 <Typography variant="h7" style={{color:'#FBFBFB', marginTop: '0.5em'}}>
                 &nbsp; | &nbsp;
@@ -156,10 +179,11 @@ const HackiDisplay = () => {
                 End-Date: &nbsp;
                 </Typography>
                 <Typography variant="h7" style={{color:'#FBFBFB', marginTop: '0.5em'}}>
-                22-22-2022
+                {hackiDetail.regEnd}
                 </Typography>
             </Box>
-                <Button className="HackiButton" style={{backgroundColor:'#fff', color: '#2E2532', height: '2em', margin: '1em', marginTop: '1.3em'}}>
+                <Button 
+               onClick={()=>navigate('/hackathons/register')} className="HackiButton" style={{backgroundColor:'#fff', color: '#2E2532', height: '2em', margin: '1em', marginTop: '1.3em'}}>
                 <HowToReg />
                   Register
                 </Button>
@@ -214,7 +238,7 @@ const HackiDisplay = () => {
                 Contact Email: &nbsp;
               </Typography>
               <Typography variant="h6" style={{color:'#FBFBFB', marginTop: '0.5em'}}>
-               abc@gmail.com
+              {hackiDetail.contactEmail}
               </Typography>
               </Box>
               <Box sx={{display: 'flex', justifyContent: 'center'}}>
@@ -222,7 +246,7 @@ const HackiDisplay = () => {
                 Instagram: &nbsp;
               </Typography>
               <Typography variant="h6" style={{color:'#FBFBFB'}}>
-              www.google.com
+              {hackiDetail.instalink}
               </Typography>
               </Box>
               <Box sx={{display: 'flex', justifyContent: 'center'}}>
@@ -230,7 +254,7 @@ const HackiDisplay = () => {
                 Discord Link: &nbsp;
               </Typography>
               <Typography variant="h6" style={{color:'#FBFBFB'}}>
-               www.google.com
+              {hackiDetail.discordLink}
               </Typography>
               </Box>
               <Box sx={{display: 'flex', justifyContent: 'center'}}> 
@@ -238,7 +262,7 @@ const HackiDisplay = () => {
                 Linkedin: &nbsp;
               </Typography>
               <Typography variant="h6" style={{color:'#FBFBFB'}}>
-               www.google.com
+              {hackiDetail.linkedInLink}
               </Typography>
               </Box>
             </Box>

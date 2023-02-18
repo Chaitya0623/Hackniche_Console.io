@@ -81,6 +81,7 @@ const Participant2 = (props) => {
                 <TextField
                   id="outlined-search"
                   label="Name"
+                  name="name2"
                   type="search"
                   value={data.name2}
                   handleChange={handleChange}
@@ -92,6 +93,7 @@ const Participant2 = (props) => {
                   id="outlined-search"
                   label="Year"
                   type="search"
+                  name="year2"
                   value={data.year2}
                   handleChange={handleChange}
                   required
@@ -101,6 +103,7 @@ const Participant2 = (props) => {
                  <TextField
                   id="outlined-search"
                   type="file"
+                  name="resume2"
                   value={data.resume2}
                   handleChange={handleChange}
                   required
@@ -128,10 +131,10 @@ const Participant2 = (props) => {
                   >
                     <MultiSelect
                       sx={{ backgroundColor: "#fff", marginTop: 3 }}
-                      name="domain"
+                      name="domain2"
                       placeholder="Domains"
                       className="multi-select"
-                      value={data.domain}
+                      value={data.domain2}
                       onChange={handleChange}
                       options={DomainOptions}
                     />
