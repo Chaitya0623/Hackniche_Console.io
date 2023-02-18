@@ -42,10 +42,12 @@ const HackiDisplay = () => {
       },
     },
   });
+
   const buttons = [
     <Button key="min"><Person /> &nbsp; Min: 2</Button>,
     <Button key="max"><Groups /> &nbsp; Max: 4</Button>
   ];
+  
   return (
     <>
     <ThemeProvider theme={theme}>

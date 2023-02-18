@@ -1,6 +1,6 @@
 .heading{
     font-size: 2rem;
-    color: #FBFBFB;
+    /* color: #FBFBFB; */
 }
 
 .maiii{
@@ -8,9 +8,9 @@
     background-color: #2E2532;
 }
 
-body{
+/* body{
     color: #FBFBFB;
-}
+} */
 
 .HackiDisplay{
     width: 80% !important;

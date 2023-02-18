@@ -21,12 +21,11 @@ import Grid from "@mui/material/Grid";
 import { FileUploader } from "react-drag-drop-files";
 import MultiSelect from "react-multiple-select-dropdown-lite";
 import "react-multiple-select-dropdown-lite/dist/index.css";
-
-
+import { Button } from "@mui/material";
 
 const Essentials = (props) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
-  const { data,handleImageUpload, handleChange, next } = props;
+  const { data,multer,handleImageUpload, handleChange, next } = props;
 
   const fileTypes = ["JPEG", "PNG", "GIF"];
   // const [file, setFile] = useState(null);
@@ -87,24 +86,47 @@ const Essentials = (props) => {
     { label: "Design", value: "Design" },
     { label: "DevOps", value: "DevOps" },
   ];
+    const SignupButton = styled(Button)({
+    backgroundColor: "#2E2532",
+    margin: "1rem",
+    borderRadius: "3rem",
+    marginLeft: "1.2rem",
+    textDecoration: "none",
+    padding: "12px 15px ",
+    width: "10rem",
+    color: "white",
+    fontSize: "0.8rem",
+    "&:hover": { backgroundColor: "#5E9387", color: "white" },
+  });
 
   return (
     <>
-      <Paper style={{ width: '78vw', position: 'relative', right: '20vw', top: '5rem', borderRadius: 5, height: 400 }}>
-        <Box style={{ backgroundColor: "white" }}>
+      <Paper className="abc" style={{ width: '78vw', position: 'relative', left: '2vw', top: '5rem', borderRadius: 5, height: 400, backgroundImage:
+      " linear-gradient(210deg, rgba(107, 107, 107, 0.04) 0%, rgba(107, 107, 107, 0.04) 8%,rgba(31, 31, 31, 0.04) 8%, rgba(31, 31, 31, 0.04) 100%),linear-gradient(178deg, rgba(228, 228, 228, 0.04) 0%, rgba(228, 228, 228, 0.04) 62%,rgba(54, 54, 54, 0.04) 62%, rgba(54, 54, 54, 0.04) 100%),linear-gradient(293deg, rgba(18, 18, 18, 0.04) 0%, rgba(18, 18, 18, 0.04) 37%,rgba(233, 233, 233, 0.04) 37%, rgba(233, 233, 233, 0.04) 100%),linear-gradient(422deg, rgba(201, 201, 201, 0.04) 0%, rgba(201, 201, 201, 0.04) 55%,rgba(47, 47, 47, 0.04) 55%, rgba(47, 47, 47, 0.04) 100%),linear-gradient(439deg, rgba(172, 172, 172, 0.04) 0%, rgba(172, 172, 172, 0.04) 33%,rgba(26, 26, 26, 0.04) 33%, rgba(26, 26, 26, 0.04) 100%),linear-gradient(233deg, rgba(11, 11, 11, 0.04) 0%, rgba(11, 11, 11, 0.04) 38%,rgba(87, 87, 87, 0.04) 38%, rgba(87, 87, 87, 0.04) 100%),linear-gradient(516deg, rgba(199, 199, 199, 0.04) 0%, rgba(199, 199, 199, 0.04) 69%,rgba(4, 4, 4, 0.04) 69%, rgba(4, 4, 4, 0.04) 100%),linear-gradient(482deg, rgba(36, 36, 36, 0.04) 0%, rgba(36, 36, 36, 0.04) 20%,rgba(91, 91, 91, 0.04) 20%, rgba(91, 91, 91, 0.04) 100%),linear-gradient(259deg, rgb(3,7,39),rgb(18,140,212))",
+          fontFamily: "Ubuntu",}}>
+        <Box style={{ backgroundColor: "white" ,position:'relative', left:'7rem'}}>
 
           <Grid container spacing={4} style={{ padding: '3rem', margin: 'rem 0' }}>
             <Grid item xs={6} style={{}}>
               <Box sx={{ display: "flex" }}>
-                <Box>
+                <Box style={{position:'relative', right:'0rem'}}>
                   <p style={{ color: "#9E4770", marginRight: '46em' }}>Hackathon Logo</p>
-                  <FileUploader
+                  {/* <FileUploader
                     multiple={true}
                     type="file"
                     handleChange={handleImageUpload}
                     name="logo"
                     value={data.logo}
-                    // types={fileTypes}
+                  /> */}
+                  <TextField
+                    id="outlined-search"
+                    label="Hackathon Name"
+                    name="title"
+                    value={multer.logo}
+                    type="file"
+                    onChange={handleImageUpload}
+                    required
+                    style={{ color: "white", marginBottom: '1.8rem', marginTop: '1rem', width: '33.5em', marginRight: '20rem' }}
                   />
                   {/* <p style={{marginRight:'28.5em',marginTop:'0.8em',marginRight:'43em'}}> {file ? `File name: ${file[0].name}` : "No files uploaded yet"}</p> */}
                   <TextField
@@ -128,7 +150,9 @@ const Essentials = (props) => {
                     style={{ color: "white", marginBottom: '2rem', width: '33.5em', marginRight: '20rem' }}
                   />
                 </Box>
-                <Box>
+                <Box sx={{position: 'relative',
+                      right: '20vw', 
+                      top: '10vh'}}>
                   <Box
                     sx={{
                       display: "flex",
@@ -169,7 +193,7 @@ const Essentials = (props) => {
                       row
                       aria-labelledby="demo-row-radio-buttons-group-label"
                       name="row-radio-buttons-group"
-                      style={{ marginBottom: '2rem' }}
+                      style={{ marginBottom: '1rem' }}
                       onChange={handleChange}
                       value={data.modeOfHacki}
                     >
@@ -188,7 +212,7 @@ const Essentials = (props) => {
                     </RadioGroup>
                   </FormControl>
                   <MultiSelect
-                    sx={{ backgroundColor: "#fff", marginTop: 3 }}
+                    sx={{ backgroundColor: "#fff" }}
                     name="domain"
                     placeholder="Domains"
                     className="multi-select"
@@ -198,7 +222,7 @@ const Essentials = (props) => {
                   />
                 </Box>
               </Box>
-              <button onClick={next}>Next</button>
+              <SignupButton style={{position:'relative', left:'15rem'}} onClick={next}>Next</SignupButton>
               {/* <p style={{ color: "#9E4770" }}>
             When does your hackathon submission period begin?
           </p>

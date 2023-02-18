@@ -1,0 +1,23 @@
+.TeamUp {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border: 2px solid forestgreen;
+    width: 80%;
+    height: 40vh;
+}
+
+th {
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+td {
+    color: black;
+    text-align: center;
+}
