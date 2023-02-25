@@ -1,0 +1,23 @@
+/* body{
+    color:white;
+} */
+
+.placeholder-colorer::placeholder{
+    color: white;
+}
+
+.maroon{
+    color:#9E4770;
+}
+
+.fixing {
+    text-decoration: none !important;
+}
+
+.multi-select {
+    width: 400px;
+}
+
+.msl{
+    display: block;
+}
