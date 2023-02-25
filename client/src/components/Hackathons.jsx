@@ -45,7 +45,7 @@ const Hackathons = () => {
     const gethackiDetail = async () => {
       try {
         let response = await axios.get(`http://localhost:8080/hacki/allHackiDetails`);
-        console.log(response.data);
+        console.log("RESPONSE"+response.data);
         sethackiDetails(response.data);
       } catch (error) {
         console.log("Error while calling gethackiDetail API");

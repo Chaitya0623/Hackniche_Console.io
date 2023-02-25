@@ -68,10 +68,10 @@ const OrgDetails = (props) => {
     formdata.append("contactEmail", data.contactEmail);
     formdata.append("discordLink", data.discordLink);
     formdata.append("instaLink", data.instaLink);
-    formdata.append("rules", data.rules);
-    formdata.append("price1", data.price1);
-    formdata.append("price2", data.price2);
-    formdata.append("price3", data.price3);
+    // formdata.append("rules", data.rules);
+    // formdata.append("price1", data.price1);
+    // formdata.append("price2", data.price2);
+    // formdata.append("price3", data.price3);
     console.log("After appending in formData");
     try {
       let response = await axios.post(url, formdata);
@@ -93,7 +93,8 @@ const OrgDetails = (props) => {
             id="outlined-search"
             label="Contact Email"
             type="search"
-            value={data.email}
+            value={data.contactEmail}
+            name="contactEmail"
             onChange={handleChange}
             required
             style={{ color: "white", marginBottom: '2rem' }}
@@ -104,6 +105,7 @@ const OrgDetails = (props) => {
             label="Discord"
             type="search"
             value={data.discordLink}
+            name="discordLink"
             onChange={handleChange}
             required
             style={{ color: "white", marginBottom: '2rem' }}
@@ -114,6 +116,7 @@ const OrgDetails = (props) => {
             label="Instagram"
             type="search"
             value={data.instaLink}
+            name="instaLink"
             onChange={handleChange}
             required
             style={{ color: "white", marginBottom: '2rem' }}
@@ -122,7 +125,8 @@ const OrgDetails = (props) => {
           <TextField
             id="outlined-search"
             label="LinkedIn"
-            value={data.LinkedInLink}
+            value={data.linkedInLink}
+            name="linkedInLink"
             onChange={handleChange}
             type="search"
             required

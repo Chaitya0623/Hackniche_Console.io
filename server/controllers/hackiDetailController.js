@@ -5,10 +5,11 @@ const {
 
 const addHackiDetail = async (request, response) => {
   console.log("HackiDetailcontroller => addHackiDetail");
-  console.log(request.body);
-  console.log(request.file);
-  const image = request.file ? request.file.filename : null;
-  console.log("Image declare krne ke baad", image);
+  console.log("REQUEST",request.body);
+  // console.log(request.file);
+  // const image = request.file ? request.file.filename : null;
+  // console.log("Image declare krne ke baad", image);
+
 
   const {
     title,

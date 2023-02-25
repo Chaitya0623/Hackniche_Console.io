@@ -13,3 +13,11 @@
 .fixing {
     text-decoration: none !important;
 }
+
+.multi-select {
+    width: 400px;
+}
+
+.msl{
+    display: block;
+}

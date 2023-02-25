@@ -19,10 +19,22 @@ import { pink } from "@mui/material/colors";
 import FormGroup from "@mui/material/FormGroup";
 import Grid from "@mui/material/Grid";
 import { Button } from "@mui/material";
-// import Particle from "./Particle";
+import MultiSelect from "react-multiple-select-dropdown-lite";
+import "react-multiple-select-dropdown-lite/dist/index.css";
+
 
 const Submissions = (props) => {
   const {data,handleImageUpload,handleChange,next,back}=props;
+  const DomainOptions = [
+    { label: "Web Development", value: "Web Development" },
+    { label: "Blockchain", value: "Blockchain" },
+    { label: "AI/ML", value: "AI/ML" },
+    { label: "IoT", value: "IoT" },
+    { label: "Cloud", value: "Cloud" },
+    { label: "Cybersecurity", value: "Cybersecurity" },
+    { label: "Design", value: "Design" },
+    { label: "DevOps", value: "DevOps" },
+  ];
 //   const [data, setData] = useState({
 //     logo: "",
 //     title: "",
@@ -142,7 +154,7 @@ const Submissions = (props) => {
               </div>
             </Grid>
             <Grid item xs={6}>
-              <Typography
+            <Typography
                 sx={{
                   color: "#9E4770",
                   margin: "1rem",
@@ -152,6 +164,16 @@ const Submissions = (props) => {
               >
                 Select Preference Skills
               </Typography>
+            <MultiSelect
+                    sx={{ backgroundColor: "#fff",width:"200vw" }}
+                    name="domain"
+                    placeholder="Domains"
+                    className="multi-select"
+                    value={data.domain}
+                  onChange={handleChange}
+                  options={DomainOptions}
+                  />
+              
               <FormGroup>
                 <Grid container spacing={2}>
                   <Grid
@@ -160,9 +182,8 @@ const Submissions = (props) => {
                     style={{ display: "flex", flexDirection: "column" }}
                   >
                     <FormControlLabel
-                    name='preferredSkills'
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
@@ -177,9 +198,8 @@ const Submissions = (props) => {
                       label="Gaming"
                     />
                     <FormControlLabel
-                    name="preferredSkills"
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
@@ -194,9 +214,8 @@ const Submissions = (props) => {
                       label="Web "
                     />
                     <FormControlLabel
-                    name="preferredSkills"
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
@@ -211,9 +230,8 @@ const Submissions = (props) => {
                       label="Machine Learning"
                     />
                     <FormControlLabel
-                    name="preferredSkills"
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
@@ -228,9 +246,8 @@ const Submissions = (props) => {
                       label="Databases"
                     />
                     <FormControlLabel
-                    name="preferredSkills"
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
@@ -245,9 +262,8 @@ const Submissions = (props) => {
                       label="Cloud"
                     />
                     <FormControlLabel
-                    name="preferredSkills"
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
@@ -268,9 +284,8 @@ const Submissions = (props) => {
                     style={{ display: "flex", flexDirection: "column" }}
                   >
                     <FormControlLabel
-                    name="preferredSkills"
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
@@ -285,9 +300,8 @@ const Submissions = (props) => {
                       label="Blockchain"
                     />
                     <FormControlLabel
-                    name="preferredSkills"
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
@@ -302,9 +316,8 @@ const Submissions = (props) => {
                       label="Cybersecurity"
                     />
                     <FormControlLabel
-                    name="preferredSkills"
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
@@ -319,9 +332,8 @@ const Submissions = (props) => {
                       label="DevOps"
                     />
                     <FormControlLabel
-                    name="preferredSkills"
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
@@ -336,9 +348,8 @@ const Submissions = (props) => {
                       label="Musin/Art"
                     />
                     <FormControlLabel
-                    name="preferredSkills"
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
@@ -353,9 +364,8 @@ const Submissions = (props) => {
                       label="Design"
                     />
                     <FormControlLabel
-                    name="preferredSkills"
-                    onChange={handleChange}
-                    value={data.preferredSkills}
+
+          
                       control={
                         <Checkbox
                           {...label}
