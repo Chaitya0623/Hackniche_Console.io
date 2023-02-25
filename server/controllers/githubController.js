@@ -4,7 +4,7 @@ const { Octokit } = require('octokit');
 
 const getNumberOfCommits = async (req, res) => {
     const octokit = new Octokit({
-        auth: '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'
+        auth: 'API_KEY_REMOVED'
     });
     try {
         const response = await octokit.request(`GET /users/${req.params.username}/repos`);
