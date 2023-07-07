@@ -20,7 +20,7 @@ const sendemail = async (email, payload, template) => {
             service: 'gmail',
             auth: {
                 user: 'consoleiomkcj@gmail.com',
-                pass: 'byjjimwgeycplyvx'
+                pass: 'REMOVED'
             }
         });
         console.log("Transporter created");
