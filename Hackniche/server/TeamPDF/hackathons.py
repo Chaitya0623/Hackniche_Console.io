@@ -206,7 +206,7 @@ def scanResume():
   for dest in li:
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
-    s.login("consoleiomkcj@gmail.com", "unscriptMKCJ")
+    s.login("consoleiomkcj@gmail.com", "")
     message = "Congratulations, you have been Shortlisted for the Event"
     s.sendmail("consoleiomkcj@gmail.com", dest, message)
     s.quit()
